@@ -1,7 +1,6 @@
 
 import { Newsletter } from "../types/Newsletter";
 
-// Sort newsletters alphabetically by title
 export const newsletters: Newsletter[] = [
   {
     id: "1",
@@ -16,28 +15,16 @@ export const newsletters: Newsletter[] = [
     linkUrl: "https://artifactstech.substack.com/"
   },
   {
-    id: "5",
-    title: "Digital Politics",
-    description: "A bi-weekly briefing on the intersections of digital culture, AI, cybersecurity, digital rights, data privacy, and tech policy.",
-    sender: "Carola Frediani",
+    id: "2",
+    title: "What's up EU",
+    description: "What's up EU puts together a concise, well-documented, and informative weekly wrap-up of the news that matters at a continental scale — from a European perspective.",
+    sender: "Business Insider",
     date: "May 12, 2023",
     isRead: true,
     isStarred: false,
-    category: "Technology",
+    category: "Politics",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
-    linkUrl: "https://conflicts.digital/"
-  },
-  {
-    id: "4",
-    title: "Digital Politics",
-    description: "This newsletter unpacks the messy, fascinating world of digital policy and politics—the rules, battles, and debates shaping our online lives.",
-    sender: "Mark Scott",
-    date: "May 12, 2023",
-    isRead: true,
-    isStarred: false,
-    category: "Technology",
-    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
-    linkUrl: "https://www.digitalpolitics.co/"
+    linkUrl: "https://whatsupeuenglish.substack.com/"
   },
   {
     id: "3",
@@ -52,18 +39,30 @@ export const newsletters: Newsletter[] = [
     linkUrl: "https://artificialintelligenceact.substack.com/"
   },
   {
-    id: "2",
-    title: "What's up EU",
-    description: "What's up EU puts together a concise, well-documented, and informative weekly wrap-up of the news that matters at a continental scale — from a European perspective.",
-    sender: "Business Insider",
+    id: "4",
+    title: "Digital Politics",
+    description: "This newsletter unpacks the messy, fascinating world of digital policy and politics—the rules, battles, and debates shaping our online lives.",
+    sender: "Mark Scott",
     date: "May 12, 2023",
     isRead: true,
     isStarred: false,
-    category: "Politics",
+    category: "Technology",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
-    linkUrl: "https://whatsupeuenglish.substack.com/"
+    linkUrl: "https://www.digitalpolitics.co/"
   },
-].sort((a, b) => a.title.localeCompare(b.title));
+  {
+    id: "5",
+    title: "Digital Conflicts",
+    description: "A bi-weekly briefing on the intersections of digital culture, AI, cybersecurity, digital rights, data privacy, and tech policy.",
+    sender: "Carola Frediani",
+    date: "May 12, 2023",
+    isRead: true,
+    isStarred: false,
+    category: "Technology",
+    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
+    linkUrl: "https://conflicts.digital/"
+  },
+];
 
 // Extract unique categories for sidebar
 export const getCategories = (): string[] => {
