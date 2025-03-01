@@ -14,20 +14,7 @@ const Index = () => {
   const unreadCounts = getUnreadCounts();
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-black" 
-         style={{ 
-           border: '4px solid #7E69AB', 
-           borderRadius: '8px',
-           boxShadow: '16px 16px 0px rgba(110, 89, 165, 0.2)',
-           margin: '16px',
-           maxWidth: '1400px',
-           width: 'calc(100% - 32px)',
-           marginLeft: 'auto',
-           marginRight: 'auto',
-           height: 'calc(100vh - 32px)',
-           overflow: 'hidden',
-           imageRendering: 'pixelated'
-         }}>
+    <div className="min-h-screen flex flex-col bg-white text-black">
       <Header />
       
       <main className="flex-1 flex">

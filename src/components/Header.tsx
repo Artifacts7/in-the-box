@@ -8,7 +8,9 @@ const Header = () => {
         <div className="flex items-center gap-4">
           <div>
             <h1 className="text-3xl font-light uppercase tracking-widest text-black">In The Box</h1>
-            <p className="text-gray-600 font-light">A curated collection of the best newsletters in the EU</p>
+            <p className="text-gray-600 font-light" style={{ fontFamily: "'VT323', monospace" }}>
+              A curated collection of the best newsletters in the EU
+            </p>
           </div>
         </div>
       </div>
