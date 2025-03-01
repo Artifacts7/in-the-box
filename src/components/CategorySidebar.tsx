@@ -1,5 +1,5 @@
 
-import { Inbox, Star, Tag } from "lucide-react";
+import { Inbox, Tag } from "lucide-react";
 
 interface CategorySidebarProps {
   categories: string[];
@@ -15,10 +15,9 @@ const CategorySidebar = ({
   unreadCounts 
 }: CategorySidebarProps) => {
   
-  // Define minimal system categories
+  // Define minimal system categories - removed "Favorites"
   const systemCategories = [
     { id: null, name: "All", icon: <Inbox size={18} /> },
-    { id: "starred", name: "Favorites", icon: <Star size={18} /> },
   ];
   
   // Define content categories based on the data
@@ -29,7 +28,7 @@ const CategorySidebar = ({
   }));
 
   return (
-    <div className="w-64 bg-black h-full overflow-y-auto pt-10 border-r border-neutral-800">
+    <div className="w-64 bg-white h-full overflow-y-auto pt-10 border-r border-gray-200">
       <div className="mb-8 space-y-1 px-4">
         {systemCategories.map((category) => (
           <button
@@ -48,7 +47,7 @@ const CategorySidebar = ({
               <span className="text-sm uppercase tracking-wider font-light">{category.name}</span>
             </div>
             {unreadCounts[category.id as string] > 0 && (
-              <span className="text-xs font-light bg-neutral-800 text-white px-2 py-0.5">
+              <span className="text-xs font-light bg-gray-100 text-black px-2 py-0.5">
                 {unreadCounts[category.id as string]}
               </span>
             )}
@@ -78,7 +77,7 @@ const CategorySidebar = ({
               <span className="text-sm uppercase tracking-wider font-light">{category.name}</span>
             </div>
             {unreadCounts[category.id] > 0 && (
-              <span className="text-xs font-light bg-neutral-800 text-white px-2 py-0.5">
+              <span className="text-xs font-light bg-gray-100 text-black px-2 py-0.5">
                 {unreadCounts[category.id]}
               </span>
             )}
