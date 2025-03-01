@@ -34,7 +34,7 @@ export const newsletters: Newsletter[] = [
     date: "May 12, 2023",
     isRead: true,
     isStarred: false,
-    category: "Politics",
+    category: "Technology",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
     linkUrl: "https://whatsupeuenglish.substack.com/"
   },
