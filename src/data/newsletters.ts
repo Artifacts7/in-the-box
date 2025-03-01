@@ -62,6 +62,18 @@ export const newsletters: Newsletter[] = [
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
     linkUrl: "https://conflicts.digital/"
   },
+  {
+    id: "6",
+    title: "Silicon Continent",
+    description: "Silicon Continent is a weekly blog by Luis Garicano and Pieter Garicano that will try to understand why the EU is falling behind Asia and the US in AI, innovation and growth more generally.",
+    sender: "Luis & Pieter Garicano",
+    date: "May 12, 2023",
+    isRead: true,
+    isStarred: false,
+    category: "Technology",
+    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
+    linkUrl: "https://www.siliconcontinent.com/"
+  },
 ];
 
 // Extract unique categories for sidebar
