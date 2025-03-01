@@ -16,15 +16,15 @@ export const newsletters: Newsletter[] = [
   },
   {
     id: "2",
-    title: "Digital Transformation Insights",
-    description: "Explore how leading companies are navigating digital transformation in 2023. This issue features exclusive interviews with CTOs from Fortune 500 companies, case studies of successful digital initiatives, and practical advice for overcoming common transformation challenges.",
+    title: "What’s up EU",
+    description: "What's up EU puts together a concise, well-documented, and informative weekly wrap-up of the news that matters at a continental scale — from a European perspective.",
     sender: "Business Insider",
     date: "May 12, 2023",
     isRead: true,
     isStarred: false,
-    category: "Business",
+    category: "Politics",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
-    linkUrl: "https://example.com/digital-transformation"
+    linkUrl: "https://whatsupeuenglish.substack.com/"
   },
   {
     id: "3",
