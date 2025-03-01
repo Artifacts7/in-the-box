@@ -16,9 +16,9 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white text-black" 
          style={{ 
-           border: '4px solid #8B5CF6', 
+           border: '4px solid #6E59A5', 
            borderRadius: '0',
-           boxShadow: '8px 8px 0px rgba(0,0,0,0.2)',
+           boxShadow: '12px 12px 0px rgba(0,0,0,0.2)',
            margin: '12px',
            imageRendering: 'pixelated'
          }}>

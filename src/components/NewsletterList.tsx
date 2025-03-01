@@ -36,7 +36,13 @@ const NewsletterList = ({
   });
 
   return (
-    <div className="w-full" style={{ padding: '8px', border: '2px solid #e2e8f0', borderRadius: '0' }}>
+    <div className="w-full" style={{ 
+      padding: '12px', 
+      border: '2px solid #e2e8f0', 
+      borderRadius: '0',
+      boxShadow: '4px 4px 0px rgba(0,0,0,0.1)',
+      fontFamily: "'VT323', monospace"
+    }}>
       <div className="relative mb-6">
         <div className="absolute left-3 top-1/2 -translate-y-1/2 text-purple-600">
           <Search size={18} />
@@ -59,7 +65,10 @@ const NewsletterList = ({
 
       {filteredNewsletters.length === 0 ? (
         <div className="text-center py-16 bg-gray-50 rounded-none border border-gray-200" 
-             style={{ boxShadow: '4px 4px 0px rgba(0,0,0,0.1)' }}>
+             style={{ 
+               boxShadow: '4px 4px 0px rgba(0,0,0,0.1)',
+               fontFamily: "'VT323', monospace"
+             }}>
           <FileSearch size={48} className="mx-auto mb-4 text-purple-400" />
           <h3 className="text-xl font-medium text-black mb-2" 
               style={{ fontFamily: "'VT323', monospace" }}>

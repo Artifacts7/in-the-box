@@ -36,7 +36,8 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
         imageRendering: 'pixelated', 
         border: '2px solid', 
         borderColor: isSelected ? '#8B5CF6' : '#e2e8f0',
-        transition: 'all 0.2s ease'
+        transition: 'all 0.2s ease',
+        fontFamily: "'VT323', monospace"
       }}
     >
       <div className="flex items-start gap-4 mb-2">
@@ -47,7 +48,8 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
               {newsletter.title}
             </h3>
           </div>
-          <div className="flex items-center text-xs text-gray-500 mt-1 gap-3">
+          <div className="flex items-center text-xs text-gray-500 mt-1 gap-3"
+               style={{ fontFamily: "'VT323', monospace" }}>
             {newsletter.sender && <span className="normal-case">{newsletter.sender}</span>}
             {newsletter.date && (
               <span className="uppercase tracking-wider">{newsletter.date}</span>
@@ -61,7 +63,10 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
         </div>
       </div>
       
-      <p className="newsletter-description text-sm text-gray-600 mb-3">{newsletter.description}</p>
+      <p className="newsletter-description text-sm text-gray-600 mb-3"
+         style={{ fontFamily: "'VT323', monospace" }}>
+        {newsletter.description}
+      </p>
       
       <div className="mt-3 pt-3 border-t border-gray-200">
         <button 
@@ -70,7 +75,8 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
           style={{ 
             imageRendering: 'pixelated', 
             boxShadow: '2px 2px 0px rgba(0,0,0,0.2)',
-            borderRadius: '0'
+            borderRadius: '0',
+            fontFamily: "'VT323', monospace"
           }}
         >
           <span>Subscribe</span>
