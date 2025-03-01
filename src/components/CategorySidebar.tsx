@@ -1,6 +1,5 @@
 
-import { Inbox, Star, Clock, Send, Calendar, FileText, Mail, Tag } from "lucide-react";
-import { useState } from "react";
+import { Inbox, Star, Tag } from "lucide-react";
 
 interface CategorySidebarProps {
   categories: string[];
@@ -16,45 +15,44 @@ const CategorySidebar = ({
   unreadCounts 
 }: CategorySidebarProps) => {
   
-  // Define system categories that should appear at the top
+  // Define minimal system categories
   const systemCategories = [
-    { id: null, name: "All", icon: <Inbox size={20} /> },
-    { id: "unread", name: "Unread", icon: <Mail size={20} /> },
-    { id: "starred", name: "Starred", icon: <Star size={20} /> },
-    { id: "snoozed", name: "Snoozed", icon: <Clock size={20} /> },
-    { id: "sent", name: "Sent", icon: <Send size={20} /> },
-    { id: "scheduled", name: "Scheduled", icon: <Calendar size={20} /> },
-    { id: "drafts", name: "Drafts", icon: <FileText size={20} /> },
+    { id: null, name: "All", icon: <Inbox size={18} /> },
+    { id: "starred", name: "Favorites", icon: <Star size={18} /> },
   ];
   
   // Define content categories based on the data
   const contentCategories = categories.map(category => ({
     id: category,
     name: category,
-    icon: <Tag size={20} />
+    icon: <Tag size={18} />
   }));
 
   return (
-    <div className="w-56 bg-gray-100 h-full overflow-y-auto pt-2 border-r border-gray-200">
-      <div className="mb-8">
+    <div className="w-52 bg-white h-full overflow-y-auto pt-6 border-r border-gray-100 shadow-sm">
+      <div className="px-4 mb-4">
+        <h2 className="text-xs font-medium text-gray-400 tracking-wider uppercase mb-2">Browse</h2>
+      </div>
+      
+      <div className="mb-6 space-y-1">
         {systemCategories.map((category) => (
           <button
             key={category.id?.toString() || "all"}
             onClick={() => onCategorySelect(category.id)}
-            className={`w-full text-left px-6 py-3 flex items-center justify-between rounded-r-full transition-colors ${
+            className={`w-full text-left px-4 py-2 flex items-center justify-between rounded-r-full transition-colors ${
               selectedCategory === category.id 
-                ? "bg-blue-100 text-blue-700 font-medium" 
-                : "text-gray-700 hover:bg-gray-200"
+                ? "bg-[#D3E4FD] text-[#2643B9] font-medium" 
+                : "text-gray-700 hover:bg-gray-50"
             }`}
           >
-            <div className="flex items-center gap-3">
-              <span className={selectedCategory === category.id ? "text-blue-700" : "text-gray-500"}>
+            <div className="flex items-center gap-2">
+              <span className={selectedCategory === category.id ? "text-[#2643B9]" : "text-gray-500"}>
                 {category.icon}
               </span>
-              <span>{category.name}</span>
+              <span className="text-sm">{category.name}</span>
             </div>
             {unreadCounts[category.id as string] > 0 && (
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-xs font-medium bg-[#F2FCE2] text-gray-700 px-2 py-0.5 rounded-full">
                 {unreadCounts[category.id as string]}
               </span>
             )}
@@ -62,29 +60,29 @@ const CategorySidebar = ({
         ))}
       </div>
 
-      <div className="border-t border-gray-200 pt-4 px-6 mb-2">
-        <h2 className="text-sm font-medium text-gray-500 mb-2">CATEGORIES</h2>
+      <div className="px-4 mb-2">
+        <h2 className="text-xs font-medium text-gray-400 tracking-wider uppercase mb-2">Categories</h2>
       </div>
       
-      <div>
+      <div className="space-y-1">
         {contentCategories.map((category) => (
           <button
             key={category.id}
             onClick={() => onCategorySelect(category.id)}
-            className={`w-full text-left px-6 py-3 flex items-center justify-between rounded-r-full transition-colors ${
+            className={`w-full text-left px-4 py-2 flex items-center justify-between rounded-r-full transition-colors ${
               selectedCategory === category.id 
-                ? "bg-blue-100 text-blue-700 font-medium" 
-                : "text-gray-700 hover:bg-gray-200"
+                ? "bg-[#D3E4FD] text-[#2643B9] font-medium" 
+                : "text-gray-700 hover:bg-gray-50"
             }`}
           >
-            <div className="flex items-center gap-3">
-              <span className={selectedCategory === category.id ? "text-blue-700" : "text-gray-500"}>
+            <div className="flex items-center gap-2">
+              <span className={selectedCategory === category.id ? "text-[#2643B9]" : "text-gray-500"}>
                 {category.icon}
               </span>
-              <span>{category.name}</span>
+              <span className="text-sm">{category.name}</span>
             </div>
             {unreadCounts[category.id] > 0 && (
-              <span className="text-sm font-medium text-gray-700">
+              <span className="text-xs font-medium bg-[#F2FCE2] text-gray-700 px-2 py-0.5 rounded-full">
                 {unreadCounts[category.id]}
               </span>
             )}
