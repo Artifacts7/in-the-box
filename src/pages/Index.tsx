@@ -9,22 +9,29 @@ import Footer from "../components/Footer";
 const Index = () => {
   const [selectedNewsletterID, setSelectedNewsletterID] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   
   const categories = getCategories();
   const unreadCounts = getUnreadCounts();
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-black">
-      <Header />
+      <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
       
-      <main className="flex-1 flex">
+      <main className="flex-1 flex flex-col md:flex-row">
         {/* Left Sidebar - Categories */}
-        <CategorySidebar 
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onCategorySelect={setSelectedCategory}
-          unreadCounts={unreadCounts}
-        />
+        <div className={`md:block ${sidebarOpen ? 'block' : 'hidden'}`}>
+          <CategorySidebar 
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onCategorySelect={(category) => {
+              setSelectedCategory(category);
+              // Close sidebar on mobile when category is selected
+              setSidebarOpen(false);
+            }}
+            unreadCounts={unreadCounts}
+          />
+        </div>
         
         {/* Main Section - Newsletter List (now takes full width) */}
         <div className="w-full bg-white p-4 overflow-y-auto"
@@ -44,7 +51,11 @@ const Index = () => {
               selectedNewsletterID={selectedNewsletterID}
               onNewsletterSelect={setSelectedNewsletterID}
               selectedCategory={selectedCategory}
-              onCategorySelect={setSelectedCategory}
+              onCategorySelect={(category) => {
+                setSelectedCategory(category);
+                // Close sidebar on mobile when category is selected through tag
+                setSidebarOpen(false);
+              }}
             />
           </div>
         </div>

@@ -31,7 +31,7 @@ const CategorySidebar = ({
   ];
   
   return (
-    <div className="w-64 bg-white h-full overflow-y-auto py-6 border-r border-gray-200" 
+    <div className="w-full md:w-64 bg-white h-auto md:h-full overflow-y-auto py-4 md:py-6 border-b md:border-b-0 md:border-r border-gray-200" 
          style={{ fontFamily: "'VT323', monospace" }}>
       <div className="px-3 mb-1">
         <h2 className="text-md uppercase tracking-wider px-3 mb-3" 

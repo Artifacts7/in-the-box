@@ -66,7 +66,7 @@ const NewsletterList = ({
       </div>
 
       {filteredNewsletters.length === 0 ? (
-        <div className="text-center py-16 bg-gray-50 rounded-none border border-gray-200" 
+        <div className="text-center py-8 md:py-16 bg-gray-50 rounded-none border border-gray-200" 
              style={{ 
                boxShadow: '4px 4px 0px rgba(0,0,0,0.1)',
                fontFamily: "'VT323', monospace"
