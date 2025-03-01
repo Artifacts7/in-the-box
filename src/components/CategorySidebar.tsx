@@ -1,58 +1,42 @@
-
 import { Inbox, Tag } from "lucide-react";
-
 interface CategorySidebarProps {
   categories: string[];
   selectedCategory: string | null;
   onCategorySelect: (category: string | null) => void;
   unreadCounts: Record<string, number>;
 }
-
-const CategorySidebar = ({ 
-  categories, 
-  selectedCategory, 
+const CategorySidebar = ({
+  categories,
+  selectedCategory,
   onCategorySelect,
-  unreadCounts 
+  unreadCounts
 }: CategorySidebarProps) => {
-  
   // Define minimal system categories - removed "Favorites"
-  const systemCategories = [
-    { id: null, name: "All", icon: <Inbox size={18} /> },
-  ];
-  
+  const systemCategories = [{
+    id: null,
+    name: "All",
+    icon: <Inbox size={18} />
+  }];
+
   // Define content categories based on the data
   const contentCategories = categories.map(category => ({
     id: category,
     name: category,
     icon: <Tag size={18} />
   }));
-
-  return (
-    <div className="w-64 bg-white h-full overflow-y-auto pt-10 border-r border-gray-200">
+  return <div className="w-64 bg-white h-full overflow-y-auto pt-10 border-r border-gray-200">
       <div className="mb-8 space-y-1 px-4">
-        {systemCategories.map((category) => (
-          <button
-            key={category.id?.toString() || "all"}
-            onClick={() => onCategorySelect(category.id)}
-            className={`sidebar-category ${
-              selectedCategory === category.id 
-                ? "sidebar-category-selected" 
-                : "sidebar-category-normal"
-            }`}
-          >
+        {systemCategories.map(category => <button key={category.id?.toString() || "all"} onClick={() => onCategorySelect(category.id)} className={`sidebar-category ${selectedCategory === category.id ? "sidebar-category-selected" : "sidebar-category-normal"}`}>
             <div className="flex items-center gap-3">
               <span className={selectedCategory === category.id ? "text-purple-600" : ""}>
                 {category.icon}
               </span>
               <span className="text-sm uppercase tracking-wider font-light">{category.name}</span>
             </div>
-            {unreadCounts[category.id as string] > 0 && (
-              <span className="text-xs font-light bg-purple-100 text-purple-700 px-2 py-0.5 rounded">
+            {unreadCounts[category.id as string] > 0 && <span className="text-xs font-light bg-purple-100 text-purple-700 px-2 py-0.5 rounded">
                 {unreadCounts[category.id as string]}
-              </span>
-            )}
-          </button>
-        ))}
+              </span>}
+          </button>)}
       </div>
 
       <div className="px-4 mb-3">
@@ -60,32 +44,18 @@ const CategorySidebar = ({
       </div>
       
       <div className="space-y-1 px-4">
-        {contentCategories.map((category) => (
-          <button
-            key={category.id}
-            onClick={() => onCategorySelect(category.id)}
-            className={`sidebar-category ${
-              selectedCategory === category.id 
-                ? "sidebar-category-selected" 
-                : "sidebar-category-normal"
-            }`}
-          >
+        {contentCategories.map(category => <button key={category.id} onClick={() => onCategorySelect(category.id)} className={`sidebar-category ${selectedCategory === category.id ? "sidebar-category-selected" : "sidebar-category-normal"}`}>
             <div className="flex items-center gap-3">
               <span className={selectedCategory === category.id ? "text-purple-600" : ""}>
                 {category.icon}
               </span>
               <span className="text-sm uppercase tracking-wider font-light">{category.name}</span>
             </div>
-            {unreadCounts[category.id] > 0 && (
-              <span className="text-xs font-light bg-purple-100 text-purple-700 px-2 py-0.5 rounded">
+            {unreadCounts[category.id] > 0 && <span className="bg-purple-100 text-purple-700 py-0.5 rounded px-[8px] text-xs font-light mx-[5px]">
                 {unreadCounts[category.id]}
-              </span>
-            )}
-          </button>
-        ))}
+              </span>}
+          </button>)}
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default CategorySidebar;
