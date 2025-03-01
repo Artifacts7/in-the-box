@@ -10,13 +10,15 @@ interface NewsletterListProps {
   selectedNewsletterID: string | null;
   onNewsletterSelect: (id: string) => void;
   selectedCategory: string | null;
+  onCategorySelect: (category: string) => void;
 }
 
 const NewsletterList = ({ 
   newsletters, 
   selectedNewsletterID,
   onNewsletterSelect,
-  selectedCategory
+  selectedCategory,
+  onCategorySelect
 }: NewsletterListProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   
@@ -86,6 +88,7 @@ const NewsletterList = ({
               newsletter={newsletter} 
               isSelected={newsletter.id === selectedNewsletterID}
               onClick={() => onNewsletterSelect(newsletter.id)}
+              onTagClick={onCategorySelect}
             />
           ))}
         </div>

@@ -7,9 +7,15 @@ interface NewsletterCardProps {
   newsletter: Newsletter;
   isSelected?: boolean;
   onClick?: () => void;
+  onTagClick?: (category: string) => void;
 }
 
-const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterCardProps) => {
+const NewsletterCard = ({ 
+  newsletter, 
+  isSelected = false, 
+  onClick,
+  onTagClick 
+}: NewsletterCardProps) => {
   const { toast } = useToast();
 
   const handleSubscribeButtonClick = (e: React.MouseEvent) => {
@@ -26,6 +32,13 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
       description: `Redirecting to ${newsletter.title}'s subscription page.`,
       duration: 3000,
     });
+  };
+
+  const handleTagClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (onTagClick && newsletter.category) {
+      onTagClick(newsletter.category);
+    }
   };
 
   return (
@@ -51,13 +64,15 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
           <div className="flex items-center text-xs text-gray-500 mt-1 gap-3"
                style={{ fontFamily: "'VT323', monospace" }}>
             {newsletter.sender && <span className="normal-case">{newsletter.sender}</span>}
-            {newsletter.date && (
-              <span className="uppercase tracking-wider">{newsletter.date}</span>
-            )}
             {newsletter.category && (
-              <span className="flex items-center gap-1 uppercase tracking-wider">
-                <Tag size={12} className="text-purple-500" /> {newsletter.category}
-              </span>
+              <button 
+                className="flex items-center gap-1 uppercase tracking-wider hover:text-purple-700 transition-colors"
+                onClick={handleTagClick}
+                style={{ fontFamily: "'VT323', monospace" }}
+              >
+                <Tag size={12} className="text-purple-500" /> 
+                {newsletter.category}
+              </button>
             )}
           </div>
         </div>

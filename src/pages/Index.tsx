@@ -16,10 +16,16 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white text-black" 
          style={{ 
-           border: '4px solid #6E59A5', 
-           borderRadius: '0',
-           boxShadow: '12px 12px 0px rgba(0,0,0,0.2)',
-           margin: '12px',
+           border: '4px solid #7E69AB', 
+           borderRadius: '8px',
+           boxShadow: '16px 16px 0px rgba(110, 89, 165, 0.2)',
+           margin: '16px',
+           maxWidth: '1400px',
+           width: 'calc(100% - 32px)',
+           marginLeft: 'auto',
+           marginRight: 'auto',
+           height: 'calc(100vh - 32px)',
+           overflow: 'hidden',
            imageRendering: 'pixelated'
          }}>
       <Header />
@@ -51,6 +57,7 @@ const Index = () => {
               selectedNewsletterID={selectedNewsletterID}
               onNewsletterSelect={setSelectedNewsletterID}
               selectedCategory={selectedCategory}
+              onCategorySelect={setSelectedCategory}
             />
           </div>
         </div>
