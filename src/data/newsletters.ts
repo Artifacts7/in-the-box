@@ -1,6 +1,7 @@
 
 import { Newsletter } from "../types/Newsletter";
 
+// Sort newsletters alphabetically by title
 export const newsletters: Newsletter[] = [
   {
     id: "1",
@@ -15,28 +16,16 @@ export const newsletters: Newsletter[] = [
     linkUrl: "https://artifactstech.substack.com/"
   },
   {
-    id: "2",
-    title: "What's up EU",
-    description: "What's up EU puts together a concise, well-documented, and informative weekly wrap-up of the news that matters at a continental scale — from a European perspective.",
-    sender: "Business Insider",
-    date: "May 12, 2023",
-    isRead: true,
-    isStarred: false,
-    category: "Politics",
-    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
-    linkUrl: "https://whatsupeuenglish.substack.com/"
-  },
-  {
-    id: "3",
-    title: "EU AI Act Newsletter",
-    description: "Subscribe to receive the biweekly EU AI Act Newsletter to your inbox. Never miss an update.",
-    sender: "Risto Uuk",
+    id: "5",
+    title: "Digital Politics",
+    description: "A bi-weekly briefing on the intersections of digital culture, AI, cybersecurity, digital rights, data privacy, and tech policy.",
+    sender: "Carola Frediani",
     date: "May 12, 2023",
     isRead: true,
     isStarred: false,
     category: "Technology",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
-    linkUrl: "https://artificialintelligenceact.substack.com/"
+    linkUrl: "https://conflicts.digital/"
   },
   {
     id: "4",
@@ -51,18 +40,30 @@ export const newsletters: Newsletter[] = [
     linkUrl: "https://www.digitalpolitics.co/"
   },
   {
-    id: "5",
-    title: "Digital Politics",
-    description: "A bi-weekly briefing on the intersections of digital culture, AI, cybersecurity, digital rights, data privacy, and tech policy.",
-    sender: "Carola Frediani",
+    id: "3",
+    title: "EU AI Act Newsletter",
+    description: "Subscribe to receive the biweekly EU AI Act Newsletter to your inbox. Never miss an update.",
+    sender: "Risto Uuk",
     date: "May 12, 2023",
     isRead: true,
     isStarred: false,
     category: "Technology",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
-    linkUrl: "https://conflicts.digital/"
+    linkUrl: "https://artificialintelligenceact.substack.com/"
   },
-];
+  {
+    id: "2",
+    title: "What's up EU",
+    description: "What's up EU puts together a concise, well-documented, and informative weekly wrap-up of the news that matters at a continental scale — from a European perspective.",
+    sender: "Business Insider",
+    date: "May 12, 2023",
+    isRead: true,
+    isStarred: false,
+    category: "Politics",
+    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
+    linkUrl: "https://whatsupeuenglish.substack.com/"
+  },
+].sort((a, b) => a.title.localeCompare(b.title));
 
 // Extract unique categories for sidebar
 export const getCategories = (): string[] => {

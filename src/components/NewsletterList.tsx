@@ -22,6 +22,7 @@ const NewsletterList = ({
 }: NewsletterListProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   
+  // First filter the newsletters
   const filteredNewsletters = newsletters.filter(newsletter => {
     // Search filter
     const matchesSearch = 
@@ -36,6 +37,11 @@ const NewsletterList = ({
     
     return matchesSearch && matchesCategory;
   });
+
+  // Then sort the filtered newsletters alphabetically by title
+  const sortedNewsletters = [...filteredNewsletters].sort((a, b) => 
+    a.title.localeCompare(b.title)
+  );
 
   return (
     <div className="w-full" style={{ 
@@ -65,7 +71,7 @@ const NewsletterList = ({
         />
       </div>
 
-      {filteredNewsletters.length === 0 ? (
+      {sortedNewsletters.length === 0 ? (
         <div className="text-center py-8 md:py-16 bg-gray-50 rounded-none border border-gray-200" 
              style={{ 
                boxShadow: '4px 4px 0px rgba(0,0,0,0.1)',
@@ -82,7 +88,7 @@ const NewsletterList = ({
         </div>
       ) : (
         <div className="space-y-0">
-          {filteredNewsletters.map((newsletter) => (
+          {sortedNewsletters.map((newsletter) => (
             <NewsletterCard 
               key={newsletter.id} 
               newsletter={newsletter} 
