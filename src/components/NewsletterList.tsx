@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Newsletter } from "../types/Newsletter";
 import NewsletterCard from "./NewsletterCard";
 import { Input } from "../components/ui/input";
-import { Search, Inbox, MailOpen, Tag } from "lucide-react";
+import { Search, Inbox, Mail, MailOpen, Tag } from "lucide-react";
 
 interface NewsletterListProps {
   newsletters: Newsletter[];
