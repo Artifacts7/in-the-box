@@ -36,9 +36,9 @@ const NewsletterList = ({
   });
 
   return (
-    <div className="w-full">
+    <div className="w-full" style={{ padding: '8px', border: '2px solid #e2e8f0', borderRadius: '0' }}>
       <div className="relative mb-6">
-        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-600">
+        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-purple-600">
           <Search size={18} />
         </div>
         <Input
@@ -47,14 +47,27 @@ const NewsletterList = ({
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="pl-10 bg-gray-50 border-gray-200 text-black placeholder-gray-500 focus-visible:ring-purple-300 focus-visible:border-purple-300"
+          style={{ 
+            borderRadius: '0', 
+            fontFamily: "'VT323', monospace",
+            fontSize: '1.1rem',
+            letterSpacing: '0.5px',
+            boxShadow: '2px 2px 0px rgba(0,0,0,0.1)'
+          }}
         />
       </div>
 
       {filteredNewsletters.length === 0 ? (
-        <div className="text-center py-16 bg-gray-50 rounded-md border border-gray-200">
-          <FileSearch size={48} className="mx-auto mb-4 text-gray-400" />
-          <h3 className="text-xl font-medium text-black mb-2">No results found</h3>
-          <p className="text-gray-600">Try adjusting your search terms or filters</p>
+        <div className="text-center py-16 bg-gray-50 rounded-none border border-gray-200" 
+             style={{ boxShadow: '4px 4px 0px rgba(0,0,0,0.1)' }}>
+          <FileSearch size={48} className="mx-auto mb-4 text-purple-400" />
+          <h3 className="text-xl font-medium text-black mb-2" 
+              style={{ fontFamily: "'VT323', monospace" }}>
+            No results found
+          </h3>
+          <p className="text-gray-600" style={{ fontFamily: "'VT323', monospace" }}>
+            Try adjusting your search terms or filters
+          </p>
         </div>
       ) : (
         <div className="space-y-0">

@@ -14,7 +14,14 @@ const Index = () => {
   const unreadCounts = getUnreadCounts();
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-black">
+    <div className="min-h-screen flex flex-col bg-white text-black" 
+         style={{ 
+           border: '4px solid #8B5CF6', 
+           borderRadius: '0',
+           boxShadow: '8px 8px 0px rgba(0,0,0,0.2)',
+           margin: '12px',
+           imageRendering: 'pixelated'
+         }}>
       <Header />
       
       <main className="flex-1 flex">
@@ -27,10 +34,12 @@ const Index = () => {
         />
         
         {/* Main Section - Newsletter List (now takes full width) */}
-        <div className="w-full bg-white p-4 overflow-y-auto">
+        <div className="w-full bg-white p-4 overflow-y-auto"
+             style={{ borderLeft: '2px solid #e2e8f0' }}>
           <div className="max-w-4xl mx-auto">
             <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-light text-black uppercase tracking-wider">
+              <h2 className="text-2xl font-light text-black uppercase tracking-wider"
+                  style={{ fontFamily: "'VT323', monospace", color: '#7E69AB' }}>
                 {selectedCategory === null 
                   ? "All Newsletters" 
                   : selectedCategory}

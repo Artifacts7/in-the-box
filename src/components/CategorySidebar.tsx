@@ -18,16 +18,16 @@ const CategorySidebar = ({
   const systemCategories = [{
     id: null,
     name: "All",
-    icon: <Mail size={18} className="text-blue-600" />
+    icon: <Mail size={18} className="text-purple-600" />
   }];
 
-  // Define content categories based on the data with Windows XP style icons
+  // Define content categories based on the data with pixelated style icons
   const contentCategories = categories.map(category => ({
     id: category,
     name: category,
     icon: selectedCategory === category 
-      ? <FolderOpen size={18} className="text-yellow-500" /> 
-      : <Folder size={18} className="text-yellow-400" />
+      ? <FolderOpen size={18} className="text-purple-500" /> 
+      : <Folder size={18} className="text-purple-400" />
   }));
   
   return (
@@ -56,7 +56,7 @@ const CategorySidebar = ({
 
       <div className="px-4 mb-3">
         <h2 className="text-xs font-light text-gray-500 uppercase tracking-widest mb-3 flex items-center">
-          <FileText size={14} className="mr-2 text-blue-600" />
+          <FileText size={14} className="mr-2 text-purple-600" />
           Categories
         </h2>
       </div>

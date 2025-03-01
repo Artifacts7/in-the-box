@@ -32,11 +32,18 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
     <div 
       className={`newsletter-card cursor-pointer py-4 mb-2 ${isSelected ? "selected" : ""}`}
       onClick={onClick}
+      style={{ 
+        imageRendering: 'pixelated', 
+        border: '2px solid', 
+        borderColor: isSelected ? '#8B5CF6' : '#e2e8f0',
+        transition: 'all 0.2s ease'
+      }}
     >
       <div className="flex items-start gap-4 mb-2">
         <div className="flex-1">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-medium text-black">
+            <h3 className="text-lg font-medium text-black"
+                style={{ fontFamily: "'VT323', monospace" }}>
               {newsletter.title}
             </h3>
           </div>
@@ -47,7 +54,7 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
             )}
             {newsletter.category && (
               <span className="flex items-center gap-1 uppercase tracking-wider">
-                <Tag size={12} /> {newsletter.category}
+                <Tag size={12} className="text-purple-500" /> {newsletter.category}
               </span>
             )}
           </div>
@@ -60,9 +67,14 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
         <button 
           onClick={handleSubscribeButtonClick} 
           className="subscribe-button flex items-center gap-1"
+          style={{ 
+            imageRendering: 'pixelated', 
+            boxShadow: '2px 2px 0px rgba(0,0,0,0.2)',
+            borderRadius: '0'
+          }}
         >
           <span>Subscribe</span>
-          <ArrowRight className="w-3.5 h-3.5" />
+          <ArrowRight className="w-3.5 h-3.5 text-purple-600" />
         </button>
       </div>
     </div>
