@@ -1,5 +1,6 @@
 
-import { Folder, FolderOpen, Mail } from "lucide-react";
+import { Folder, FolderOpen, Mail, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
 
 interface CategorySidebarProps {
   categories: string[];
@@ -29,7 +30,7 @@ const CategorySidebar = ({
   
   return (
     <div 
-      className="w-full md:w-64 bg-white h-auto md:h-full overflow-y-auto py-4 md:py-6 border-b md:border-b-0 md:border-r border-gray-200 transition-all duration-200 ease-in-out" 
+      className="w-full md:w-64 bg-white h-auto md:h-full overflow-y-auto py-4 md:py-6 border-b md:border-b-0 md:border-r border-gray-200 transition-all duration-300 ease-in-out animate-fade-in" 
       style={{ fontFamily: "'VT323', monospace" }}
     >
       <div className="space-y-2 px-3">
@@ -48,14 +49,19 @@ const CategorySidebar = ({
               </span>
               <span className="text-sm uppercase tracking-wider">{category.name}</span>
             </div>
-            {unreadCounts[category.id as string] > 0 && (
-              <span 
-                className="bg-purple-100 text-purple-700 py-0.5 rounded-none px-[8px] text-xs mx-[5px]" 
-                style={{ fontFamily: "'VT323', monospace" }}
-              >
-                {unreadCounts[category.id as string]}
-              </span>
-            )}
+            <div className="flex items-center">
+              {unreadCounts[category.id as string] > 0 && (
+                <span 
+                  className="bg-purple-100 text-purple-700 py-0.5 rounded-none px-[8px] text-xs mx-[5px]" 
+                  style={{ fontFamily: "'VT323', monospace" }}
+                >
+                  {unreadCounts[category.id as string]}
+                </span>
+              )}
+              {selectedCategory !== category.id && (
+                <ChevronRight size={16} className="text-purple-400 ml-1 opacity-0 md:opacity-0 group-hover:opacity-100 transition-opacity" />
+              )}
+            </div>
           </button>
         ))}
       </div>
