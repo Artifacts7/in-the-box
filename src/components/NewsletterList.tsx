@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Newsletter } from "../types/Newsletter";
 import NewsletterCard from "./NewsletterCard";
 import { Input } from "../components/ui/input";
-import { ArrowDown, Search, Inbox, Mail, MailOpen, Tag } from "lucide-react";
+import { Search } from "lucide-react";
 
 interface NewsletterListProps {
   newsletters: Newsletter[];
@@ -19,7 +19,6 @@ const NewsletterList = ({
   selectedCategory
 }: NewsletterListProps) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filter, setFilter] = useState<"all" | "unread" | "read">("all");
   
   const filteredNewsletters = newsletters.filter(newsletter => {
     // Search filter
@@ -28,20 +27,12 @@ const NewsletterList = ({
       newsletter.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
       (newsletter.sender && newsletter.sender.toLowerCase().includes(searchTerm.toLowerCase()));
     
-    // Read/unread filter
-    const matchesReadStatus = 
-      filter === "all" || 
-      (filter === "unread" && !newsletter.isRead) || 
-      (filter === "read" && newsletter.isRead);
-    
     // Category filter
     const matchesCategory = 
       selectedCategory === null || 
-      selectedCategory === "unread" ? !newsletter.isRead : 
-      selectedCategory === "starred" ? newsletter.isStarred : 
       newsletter.category === selectedCategory;
     
-    return matchesSearch && matchesReadStatus && matchesCategory;
+    return matchesSearch && matchesCategory;
   });
 
   return (
@@ -55,65 +46,17 @@ const NewsletterList = ({
           placeholder="Search newsletters..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="pl-10 bg-neutral-900 border-neutral-800 text-white placeholder-gray-500 focus-visible:ring-gray-700 focus-visible:border-gray-700"
+          className="pl-10 bg-gray-50 border-gray-200 text-black placeholder-gray-500 focus-visible:ring-gray-300 focus-visible:border-gray-300"
         />
       </div>
 
-      <div className="flex gap-6 mb-6 border-b border-neutral-800">
-        <button
-          onClick={() => setFilter("all")}
-          className={`px-0 py-3 text-sm font-light uppercase tracking-wider transition-colors relative ${
-            filter === "all" 
-              ? "text-white" 
-              : "text-gray-500 hover:text-gray-300"
-          }`}
-        >
-          <div className="flex items-center gap-2">
-            <span>All</span>
-          </div>
-          {filter === "all" && (
-            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white" />
-          )}
-        </button>
-        <button
-          onClick={() => setFilter("unread")}
-          className={`px-0 py-3 text-sm font-light uppercase tracking-wider transition-colors relative ${
-            filter === "unread" 
-              ? "text-white" 
-              : "text-gray-500 hover:text-gray-300"
-          }`}
-        >
-          <div className="flex items-center gap-2">
-            <span>Unread</span>
-          </div>
-          {filter === "unread" && (
-            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white" />
-          )}
-        </button>
-        <button
-          onClick={() => setFilter("read")}
-          className={`px-0 py-3 text-sm font-light uppercase tracking-wider transition-colors relative ${
-            filter === "read" 
-              ? "text-white" 
-              : "text-gray-500 hover:text-gray-300"
-          }`}
-        >
-          <div className="flex items-center gap-2">
-            <span>Read</span>
-          </div>
-          {filter === "read" && (
-            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white" />
-          )}
-        </button>
-      </div>
-
       {filteredNewsletters.length === 0 ? (
-        <div className="text-center py-16 bg-neutral-900 rounded-none">
-          <h3 className="text-xl font-light text-white mb-2 uppercase tracking-wider">No results found</h3>
-          <p className="text-gray-400">Try adjusting your search terms or filters</p>
+        <div className="text-center py-16 bg-gray-50 rounded-md">
+          <h3 className="text-xl font-light text-black mb-2 uppercase tracking-wider">No results found</h3>
+          <p className="text-gray-600">Try adjusting your search terms or filters</p>
         </div>
       ) : (
-        <div className="space-y-0 divide-y divide-neutral-800">
+        <div className="space-y-0 divide-y divide-gray-200">
           {filteredNewsletters.map((newsletter) => (
             <NewsletterCard 
               key={newsletter.id} 
