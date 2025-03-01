@@ -19,7 +19,7 @@ const Header = ({
           </div>
           
           <button onClick={onMenuClick} className="md:hidden p-2 text-purple-600 hover:text-purple-800 focus:outline-none" aria-label="Toggle menu">
-            <Menu size={24} />
+            
           </button>
         </div>
       </div>
