@@ -11,6 +11,11 @@ const Header = ({ onMenuClick }: HeaderProps) => {
       <div className="max-w-5xl mx-auto px-4 md:px-0">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
+            <img 
+              src="/lovable-uploads/76c43e19-dd4e-42a8-9315-f676898aa4af.png" 
+              alt="In The Box Logo" 
+              className="w-10 h-auto object-contain"
+            />
             <div>
               <h1 className="text-2xl md:text-3xl font-light uppercase tracking-widest text-black">In The Box</h1>
               <p className="text-sm md:text-base text-gray-600 font-light" style={{ fontFamily: "'VT323', monospace" }}>

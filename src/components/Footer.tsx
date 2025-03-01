@@ -10,6 +10,11 @@ const Footer = () => {
              style={{ fontFamily: "'VT323', monospace" }}>
             © {new Date().getFullYear()} In The Box
           </p>
+          
+          <p className="text-purple-600 text-sm tracking-wider font-light mt-2 md:mt-0"
+             style={{ fontFamily: "'VT323', monospace" }}>
+            You want to add your newsletter? Reach out to lorenzo@artifactstech.com
+          </p>
         </div>
       </div>
     </footer>
