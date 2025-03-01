@@ -4,14 +4,23 @@ import { newsletters } from "../data/newsletters";
 import { ArrowLeft, Mail, Calendar, User, Tag, ExternalLink } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { useToast } from "../components/ui/use-toast";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 
 const Detail = () => {
   const { id } = useParams<{ id: string }>();
   const newsletter = newsletters.find(n => n.id === id);
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+    
+    return () => clearTimeout(timer);
+  }, [id]);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,11 +44,17 @@ const Detail = () => {
     );
   }
 
+  // Determine the iframe URL - for the first newsletter use artifactstech.substack.com
+  let iframeUrl = newsletter.linkUrl || "about:blank";
+  if (newsletter.id === "1") {
+    iframeUrl = "https://artifactstech.substack.com/";
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
-      <main className="flex-1 px-4 md:px-0 py-12">
-        <div className="max-w-3xl mx-auto">
-          <Link to="/" className="inline-flex items-center text-newsletter-mediumGray hover:text-newsletter-blue mb-8 transition-colors">
+      <main className="flex-1 px-4 md:px-0">
+        <div className="max-w-5xl mx-auto py-8">
+          <Link to="/" className="inline-flex items-center text-newsletter-mediumGray hover:text-newsletter-blue mb-6 transition-colors">
             <ArrowLeft className="mr-2" size={16} />
             Back to inbox
           </Link>
@@ -82,6 +97,25 @@ const Detail = () => {
               <div className="prose max-w-none">
                 <p className="text-newsletter-darkGray leading-relaxed text-lg mb-6">{newsletter.description}</p>
                 
+                <div className="bg-gray-50 border border-gray-200 rounded-lg h-[500px] mb-6 relative">
+                  {isLoading && (
+                    <div className="absolute inset-0 bg-white flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-newsletter-blue mx-auto mb-4"></div>
+                        <p className="text-newsletter-mediumGray">Loading newsletter content...</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  <iframe 
+                    src={iframeUrl}
+                    className="w-full h-full border-0" 
+                    title={`${newsletter.title} content`}
+                    sandbox="allow-scripts allow-same-origin allow-forms"
+                    onLoad={() => setIsLoading(false)}
+                  />
+                </div>
+                
                 {newsletter.linkUrl && (
                   <div className="mb-6">
                     <a 
@@ -90,7 +124,7 @@ const Detail = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Visit website <ExternalLink size={14} className="ml-1" />
+                      View full newsletter <ExternalLink size={14} className="ml-1" />
                     </a>
                   </div>
                 )}

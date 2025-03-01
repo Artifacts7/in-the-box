@@ -7,9 +7,15 @@ import { Search, Inbox, Mail, MailOpen, Tag } from "lucide-react";
 
 interface NewsletterListProps {
   newsletters: Newsletter[];
+  selectedNewsletterID: string | null;
+  onNewsletterSelect: (id: string) => void;
 }
 
-const NewsletterList = ({ newsletters }: NewsletterListProps) => {
+const NewsletterList = ({ 
+  newsletters, 
+  selectedNewsletterID,
+  onNewsletterSelect 
+}: NewsletterListProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState<"all" | "unread" | "read">("all");
   
@@ -30,7 +36,7 @@ const NewsletterList = ({ newsletters }: NewsletterListProps) => {
   });
 
   return (
-    <div className="w-full max-w-5xl mx-auto">
+    <div className="w-full">
       <div className="relative mb-5">
         <div className="absolute left-3 top-1/2 -translate-y-1/2 text-newsletter-mediumGray">
           <Search size={18} />
@@ -101,9 +107,14 @@ const NewsletterList = ({ newsletters }: NewsletterListProps) => {
           <p className="text-newsletter-mediumGray">Try adjusting your search terms or filters</p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-2">
           {filteredNewsletters.map((newsletter) => (
-            <NewsletterCard key={newsletter.id} newsletter={newsletter} />
+            <NewsletterCard 
+              key={newsletter.id} 
+              newsletter={newsletter} 
+              isSelected={newsletter.id === selectedNewsletterID}
+              onClick={() => onNewsletterSelect(newsletter.id)}
+            />
           ))}
         </div>
       )}

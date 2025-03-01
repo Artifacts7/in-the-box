@@ -4,14 +4,14 @@ import { Newsletter } from "../types/Newsletter";
 export const newsletters: Newsletter[] = [
   {
     id: "1",
-    title: "The Weekly Digest: Tech & Society",
-    description: "This week's roundup covers the latest developments in how technology is shaping our society. We explore the ethical implications of AI in healthcare, discuss new privacy regulations, and highlight innovative startups making a positive social impact.",
-    sender: "Tech & Society",
+    title: "Artifacts Tech",
+    description: "Bringing historical artifacts into the digital age. How technology is preserving our cultural heritage and making it accessible to everyone.",
+    sender: "Artifacts Tech Newsletter",
     date: "May 15, 2023",
     isRead: false,
     category: "Technology",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
-    linkUrl: "#"
+    linkUrl: "https://artifactstech.substack.com/"
   },
   {
     id: "2",
@@ -22,7 +22,7 @@ export const newsletters: Newsletter[] = [
     isRead: true,
     category: "Business",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
-    linkUrl: "#"
+    linkUrl: "https://example.com/digital-transformation"
   },
   {
     id: "3",
@@ -33,7 +33,7 @@ export const newsletters: Newsletter[] = [
     isRead: false,
     category: "Culture",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
-    linkUrl: "#"
+    linkUrl: "https://example.com/book-recommendations"
   },
   {
     id: "4",
@@ -44,7 +44,7 @@ export const newsletters: Newsletter[] = [
     isRead: true,
     category: "Technology",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
-    linkUrl: "#"
+    linkUrl: "https://example.com/web-dev-trends"
   },
   {
     id: "5",
@@ -55,7 +55,7 @@ export const newsletters: Newsletter[] = [
     isRead: false,
     category: "Business",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
-    linkUrl: "#"
+    linkUrl: "https://example.com/future-work"
   },
   {
     id: "6",
@@ -66,6 +66,6 @@ export const newsletters: Newsletter[] = [
     isRead: true,
     category: "Lifestyle",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
-    linkUrl: "#"
+    linkUrl: "https://example.com/minimalist-tech"
   }
 ];
