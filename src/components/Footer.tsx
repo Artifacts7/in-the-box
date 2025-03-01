@@ -1,18 +1,18 @@
 
-import { Heart } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="py-12 mt-20 border-t border-gray-100">
+    <footer className="py-8 border-t border-neutral-800 bg-black">
       <div className="max-w-5xl mx-auto px-4 md:px-0">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-newsletter-mediumGray text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} Newsletterati. All rights reserved.
+          <p className="text-gray-500 text-sm mb-4 md:mb-0 uppercase tracking-wider font-light">
+            © {new Date().getFullYear()} In The Box
           </p>
-          <div className="flex items-center space-x-2 text-sm text-newsletter-mediumGray">
-            <span>Made with</span>
-            <Heart className="h-4 w-4 text-red-500 animate-pulse-subtle" />
-            <span>for newsletter lovers</span>
+          <div className="flex items-center space-x-4 text-sm text-gray-500">
+            <a href="#" className="uppercase tracking-wider hover:text-white transition-colors text-xs">About</a>
+            <a href="#" className="uppercase tracking-wider hover:text-white transition-colors text-xs">Contact</a>
+            <a href="#" className="uppercase tracking-wider hover:text-white transition-colors text-xs">Privacy</a>
           </div>
         </div>
       </div>

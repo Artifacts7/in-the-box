@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Newsletter } from "../types/Newsletter";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
 
 interface NewsletterPreviewProps {
@@ -39,45 +39,45 @@ const NewsletterPreview = ({ newsletter }: NewsletterPreviewProps) => {
   return (
     <div className="h-full flex flex-col">
       {/* Email header */}
-      <div className="bg-white border-b border-gray-200 p-4 flex justify-between items-center">
+      <div className="bg-black border-b border-neutral-800 p-4 flex justify-between items-center">
         <div>
-          <h2 className="text-xl font-semibold">{newsletter.title}</h2>
-          <div className="text-sm text-newsletter-mediumGray mt-1">
-            From {newsletter.sender} • {newsletter.date}
+          <h2 className="text-xl font-light uppercase tracking-wider text-white">{newsletter.title}</h2>
+          <div className="text-sm text-gray-400 mt-1 uppercase tracking-wider">
+            {newsletter.sender} • {newsletter.date}
           </div>
         </div>
         <a 
           href={newsletter.linkUrl || "about:blank"} 
           target="_blank" 
           rel="noopener noreferrer"
-          className="text-newsletter-blue hover:text-newsletter-blue/80 flex items-center gap-1 text-sm"
+          className="text-gray-400 hover:text-white flex items-center gap-1 text-sm"
         >
-          Open in browser <ExternalLink size={14} />
+          <span className="uppercase tracking-wider text-xs">Open</span> <ExternalLink size={14} />
         </a>
       </div>
       
       {/* Virtual machine frame for the newsletter content */}
       <div className="flex-1 relative">
         {isLoading && (
-          <div className="absolute inset-0 bg-white flex items-center justify-center z-10">
+          <div className="absolute inset-0 bg-black flex items-center justify-center z-10">
             <div className="text-center">
-              <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-newsletter-blue mx-auto mb-4"></div>
-              <p className="text-newsletter-mediumGray">Loading newsletter content...</p>
+              <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white mx-auto mb-4"></div>
+              <p className="text-gray-400 uppercase tracking-wider text-sm">Loading newsletter</p>
             </div>
           </div>
         )}
         
         {loadError ? (
-          <div className="absolute inset-0 bg-white flex flex-col items-center justify-center">
+          <div className="absolute inset-0 bg-black flex flex-col items-center justify-center">
             <div className="text-center max-w-md px-4">
-              <h3 className="text-xl font-medium mb-2 text-red-600">Unable to display content</h3>
-              <p className="text-newsletter-mediumGray mb-6">
+              <h3 className="text-xl font-light mb-2 text-white uppercase tracking-wider">Content Not Available</h3>
+              <p className="text-gray-400 mb-6">
                 This newsletter doesn't allow embedding in other websites due to security policies.
               </p>
               <Button 
-                variant="default"
+                variant="outline"
                 onClick={() => window.open(newsletter.linkUrl, "_blank")}
-                className="bg-newsletter-blue hover:bg-newsletter-blue/90"
+                className="border-white text-white hover:bg-white hover:text-black uppercase tracking-wider font-light"
               >
                 Visit Website <ExternalLink size={14} className="ml-2" />
               </Button>
@@ -86,7 +86,7 @@ const NewsletterPreview = ({ newsletter }: NewsletterPreviewProps) => {
         ) : (
           <iframe 
             src={iframeUrl}
-            className="w-full h-full border-0" 
+            className="w-full h-full border-0 bg-white" 
             title={`${newsletter.title} content`}
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
             onLoad={() => setIsLoading(false)}

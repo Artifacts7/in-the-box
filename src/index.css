@@ -3,6 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -34,22 +36,6 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
@@ -80,14 +66,6 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -97,7 +75,8 @@
   }
 
   body {
-    @apply bg-newsletter-offWhite text-foreground antialiased;
+    @apply bg-black text-white antialiased;
+    font-family: 'Inter', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -107,11 +86,11 @@
 
 @layer components {
   .newsletter-card {
-    @apply bg-white rounded-lg p-6 transition-all duration-300 border border-transparent hover:border-newsletter-blue/10 hover:shadow-subtle;
+    @apply bg-neutral-900 rounded-none p-6 transition-all duration-300 border-l-2 border-t-0 border-r-0 border-b-0;
   }
   
   .subscribe-button {
-    @apply inline-flex items-center text-newsletter-mediumGray hover:text-newsletter-blue transition-colors duration-200 font-medium text-sm;
+    @apply inline-flex items-center text-gray-400 hover:text-white transition-colors duration-200 font-medium text-sm;
   }
   
   .newsletter-title {
@@ -119,6 +98,18 @@
   }
   
   .newsletter-description {
-    @apply text-newsletter-darkGray leading-relaxed;
+    @apply text-gray-400 leading-relaxed;
+  }
+
+  .sidebar-category {
+    @apply w-full text-left px-4 py-3 flex items-center justify-between rounded-none transition-colors;
+  }
+
+  .sidebar-category-selected {
+    @apply text-white border-l-2 border-white bg-neutral-900;
+  }
+
+  .sidebar-category-normal {
+    @apply text-gray-400 hover:text-white border-l-2 border-transparent hover:border-gray-700;
   }
 }

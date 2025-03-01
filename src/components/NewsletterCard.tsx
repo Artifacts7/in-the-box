@@ -1,5 +1,5 @@
 
-import { ArrowRight, Mail, Clock, Tag, Star } from "lucide-react";
+import { ArrowRight, Mail, ArrowDown, Tag, Star } from "lucide-react";
 import { Newsletter } from "../types/Newsletter";
 import { useState } from "react";
 import { useToast } from "../components/ui/use-toast";
@@ -41,35 +41,30 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
 
   return (
     <div 
-      className={`newsletter-card border-l-4 cursor-pointer ${
-        newsletter.isRead ? "border-l-transparent" : "border-l-newsletter-blue"
+      className={`newsletter-card cursor-pointer ${
+        newsletter.isRead ? "border-transparent" : "border-white"
       } ${
-        isSelected ? "bg-newsletter-lightGray border-newsletter-blue/50" : "hover:shadow-md"
+        isSelected ? "bg-neutral-800" : ""
       } transition-all duration-200`}
       onClick={onClick}
     >
-      <div className="flex items-center gap-4 mb-3">
-        <div className="w-10 h-10 flex-shrink-0 rounded-full overflow-hidden bg-newsletter-blue flex items-center justify-center">
-          <Mail className="text-white" size={18} />
-        </div>
+      <div className="flex items-start gap-4 mb-3">
         <div className="flex-1">
           <div className="flex items-center justify-between">
-            <h3 className={`text-lg font-semibold ${newsletter.isRead ? "text-newsletter-mediumGray" : "text-newsletter-darkGray"}`}>
+            <h3 className={`text-lg uppercase tracking-wider font-light ${newsletter.isRead ? "text-gray-400" : "text-white"}`}>
               {newsletter.title}
             </h3>
             {newsletter.isStarred && (
-              <Star className="text-yellow-400 fill-yellow-400" size={18} />
+              <Star className="text-white" size={18} />
             )}
           </div>
-          <div className="flex items-center text-xs text-newsletter-mediumGray mt-1 gap-3">
-            {newsletter.sender && <span>{newsletter.sender}</span>}
+          <div className="flex items-center text-xs text-gray-500 mt-1 gap-3">
+            {newsletter.sender && <span className="uppercase tracking-wider">{newsletter.sender}</span>}
             {newsletter.date && (
-              <span className="flex items-center gap-1">
-                <Clock size={12} /> {newsletter.date}
-              </span>
+              <span className="uppercase tracking-wider">{newsletter.date}</span>
             )}
             {newsletter.category && (
-              <span className="flex items-center gap-1">
+              <span className="flex items-center gap-1 uppercase tracking-wider">
                 <Tag size={12} /> {newsletter.category}
               </span>
             )}
@@ -77,9 +72,9 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
         </div>
       </div>
       
-      <p className="newsletter-description text-sm text-gray-600 line-clamp-2">{newsletter.description}</p>
+      <p className="newsletter-description text-sm text-gray-400 line-clamp-2">{newsletter.description}</p>
       
-      <div className="flex flex-col space-y-4 mt-4 pt-4 border-t border-gray-100">
+      <div className="flex flex-col space-y-4 mt-4 pt-4 border-t border-neutral-800">
         {isSubscribing ? (
           <form onSubmit={handleSubscribe} onClick={(e) => e.stopPropagation()}>
             <div className="flex flex-col space-y-3">
@@ -88,14 +83,14 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email address"
-                className="border border-gray-200 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-newsletter-blue/30 transition-all"
+                className="border border-neutral-700 bg-neutral-900 rounded-none px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-white transition-all text-white"
                 required
                 onClick={(e) => e.stopPropagation()}
               />
               <div className="flex space-x-2">
                 <button
                   type="submit"
-                  className="bg-newsletter-blue text-white px-4 py-2 rounded-md text-sm font-medium transition-all hover:bg-newsletter-blue/90"
+                  className="bg-white text-black px-4 py-2 text-sm font-light uppercase tracking-wider transition-all hover:bg-gray-200"
                   onClick={(e) => e.stopPropagation()}
                 >
                   Subscribe
@@ -103,7 +98,7 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
                 <button
                   type="button"
                   onClick={handleCancelButtonClick}
-                  className="text-newsletter-mediumGray px-4 py-2 rounded-md text-sm font-medium transition-all hover:bg-gray-100"
+                  className="text-gray-400 px-4 py-2 text-sm font-light uppercase tracking-wider transition-all hover:text-white"
                 >
                   Cancel
                 </button>
@@ -115,8 +110,8 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
             onClick={handleSubscribeButtonClick} 
             className="subscribe-button group text-left"
           >
-            <span className="mr-1">→</span> Subscribe to this newsletter
-            <ArrowRight className="ml-1 w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+            <ArrowDown className="mr-2 w-3.5 h-3.5" />
+            <span className="uppercase tracking-wider text-xs">Subscribe</span>
           </button>
         )}
       </div>
