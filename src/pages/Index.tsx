@@ -13,7 +13,7 @@ const Index = () => {
       <main className="flex-1 px-4 md:px-0">
         <div className="max-w-5xl mx-auto mb-12">
           <div className="flex justify-between items-center mb-10">
-            <h2 className="text-2xl font-semibold">Discover Newsletters</h2>
+            <h2 className="text-2xl font-semibold">Inbox</h2>
             <SubmitNewsletterDialog />
           </div>
           

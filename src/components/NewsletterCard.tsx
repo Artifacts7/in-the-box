@@ -1,5 +1,5 @@
 
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Mail, Clock, Tag } from "lucide-react";
 import { Newsletter } from "../types/Newsletter";
 import { useState } from "react";
 import { useToast } from "../components/ui/use-toast";
@@ -28,21 +28,36 @@ const NewsletterCard = ({ newsletter }: NewsletterCardProps) => {
   };
 
   return (
-    <div className="newsletter-card animate-fade-up">
+    <div className={`newsletter-card border-l-4 ${newsletter.isRead ? "border-l-transparent" : "border-l-newsletter-blue"} hover:shadow-md transition-all duration-200`}>
       <Link to={`/newsletter/${newsletter.id}`} className="block">
-        <div className="flex items-center gap-4 mb-4">
-          {newsletter.imageUrl && (
-            <div className="w-10 h-10 flex-shrink-0 rounded-full overflow-hidden bg-newsletter-blue flex items-center justify-center">
-              <Mail className="text-white" size={18} />
+        <div className="flex items-center gap-4 mb-3">
+          <div className="w-10 h-10 flex-shrink-0 rounded-full overflow-hidden bg-newsletter-blue flex items-center justify-center">
+            <Mail className="text-white" size={18} />
+          </div>
+          <div className="flex-1">
+            <h3 className={`text-lg font-semibold ${newsletter.isRead ? "text-newsletter-mediumGray" : "text-newsletter-darkGray"}`}>
+              {newsletter.title}
+            </h3>
+            <div className="flex items-center text-xs text-newsletter-mediumGray mt-1 gap-3">
+              {newsletter.sender && <span>{newsletter.sender}</span>}
+              {newsletter.date && (
+                <span className="flex items-center gap-1">
+                  <Clock size={12} /> {newsletter.date}
+                </span>
+              )}
+              {newsletter.category && (
+                <span className="flex items-center gap-1">
+                  <Tag size={12} /> {newsletter.category}
+                </span>
+              )}
             </div>
-          )}
-          <h3 className="newsletter-title">{newsletter.title}</h3>
+          </div>
         </div>
         
-        <p className="newsletter-description mb-6">{newsletter.description}</p>
+        <p className="newsletter-description text-sm text-gray-600 line-clamp-2">{newsletter.description}</p>
       </Link>
       
-      <div className="flex flex-col space-y-4">
+      <div className="flex flex-col space-y-4 mt-4 pt-4 border-t border-gray-100">
         {isSubscribing ? (
           <form onSubmit={handleSubscribe} className="flex flex-col space-y-3">
             <input
@@ -74,7 +89,7 @@ const NewsletterCard = ({ newsletter }: NewsletterCardProps) => {
             onClick={() => setIsSubscribing(true)} 
             className="subscribe-button group"
           >
-            <span className="mr-1">→</span> Iscriviti alla newsletter
+            <span className="mr-1">→</span> Subscribe to this newsletter
             <ArrowRight className="ml-1 w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
           </button>
         )}
