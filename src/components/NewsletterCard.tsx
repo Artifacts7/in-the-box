@@ -1,5 +1,5 @@
 
-import { ArrowDown, Tag } from "lucide-react";
+import { ArrowRight, Tag } from "lucide-react";
 import { Newsletter } from "../types/Newsletter";
 import { useState } from "react";
 import { useToast } from "../components/ui/use-toast";
@@ -11,50 +11,39 @@ interface NewsletterCardProps {
 }
 
 const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterCardProps) => {
-  const [isSubscribing, setIsSubscribing] = useState(false);
-  const [email, setEmail] = useState("");
   const { toast } = useToast();
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsSubscribing(false);
-    
-    toast({
-      title: "Subscription successful!",
-      description: `You've subscribed to ${newsletter.title}. Check your email to confirm.`,
-      duration: 5000,
-    });
-    
-    setEmail("");
-  };
 
   const handleSubscribeButtonClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setIsSubscribing(true);
-  };
-
-  const handleCancelButtonClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setIsSubscribing(false);
+    
+    // Use the newsletter's linkUrl or a default URL
+    const subscribeUrl = newsletter.linkUrl || "https://example.com/subscribe";
+    
+    // Open in a new tab
+    window.open(subscribeUrl, "_blank", "noopener,noreferrer");
+    
+    toast({
+      title: "Opening subscription page",
+      description: `Redirecting to ${newsletter.title}'s subscription page.`,
+      duration: 3000,
+    });
   };
 
   return (
     <div 
-      className={`newsletter-card cursor-pointer border-transparent
-      ${isSelected ? "bg-gray-100" : ""} 
-      transition-all duration-200 py-4`}
+      className={`newsletter-card cursor-pointer transition-all duration-200 py-4 hover:bg-gray-50
+      ${isSelected ? "bg-purple-50 border-l-4 border-purple-500" : "border-transparent"}`}
       onClick={onClick}
     >
       <div className="flex items-start gap-4 mb-2">
         <div className="flex-1">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg uppercase tracking-wider font-light text-black">
+            <h3 className="text-lg font-medium text-black">
               {newsletter.title}
             </h3>
           </div>
           <div className="flex items-center text-xs text-gray-500 mt-1 gap-3">
-            {newsletter.sender && <span className="uppercase tracking-wider">{newsletter.sender}</span>}
+            {newsletter.sender && <span className="normal-case">{newsletter.sender}</span>}
             {newsletter.date && (
               <span className="uppercase tracking-wider">{newsletter.date}</span>
             )}
@@ -67,48 +56,16 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
         </div>
       </div>
       
-      <p className="newsletter-description text-sm text-gray-600 line-clamp-3">{newsletter.description}</p>
+      <p className="newsletter-description text-sm text-gray-600 mb-3">{newsletter.description}</p>
       
-      <div className="flex flex-col space-y-4 mt-3 pt-3 border-t border-gray-200">
-        {isSubscribing ? (
-          <form onSubmit={handleSubscribe} onClick={(e) => e.stopPropagation()}>
-            <div className="flex flex-col space-y-3">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email address"
-                className="border border-gray-300 bg-gray-50 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-black transition-all text-black"
-                required
-                onClick={(e) => e.stopPropagation()}
-              />
-              <div className="flex space-x-2">
-                <button
-                  type="submit"
-                  className="bg-black text-white px-4 py-2 text-sm font-light uppercase tracking-wider transition-all hover:bg-gray-800"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  Subscribe
-                </button>
-                <button
-                  type="button"
-                  onClick={handleCancelButtonClick}
-                  className="text-gray-600 px-4 py-2 text-sm font-light uppercase tracking-wider transition-all hover:text-black"
-                >
-                  Cancel
-                </button>
-              </div>
-            </div>
-          </form>
-        ) : (
-          <button 
-            onClick={handleSubscribeButtonClick} 
-            className="subscribe-button group text-left"
-          >
-            <ArrowDown className="mr-2 w-3.5 h-3.5" />
-            <span className="uppercase tracking-wider text-xs">Subscribe</span>
-          </button>
-        )}
+      <div className="mt-3 pt-3 border-t border-gray-200">
+        <button 
+          onClick={handleSubscribeButtonClick} 
+          className="text-purple-600 hover:text-purple-800 text-left flex items-center gap-1 font-medium text-sm transition-colors"
+        >
+          <span>Subscribe</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </button>
       </div>
     </div>
   );

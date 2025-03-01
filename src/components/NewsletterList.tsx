@@ -46,13 +46,13 @@ const NewsletterList = ({
           placeholder="Search newsletters..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="pl-10 bg-gray-50 border-gray-200 text-black placeholder-gray-500 focus-visible:ring-gray-300 focus-visible:border-gray-300"
+          className="pl-10 bg-gray-50 border-gray-200 text-black placeholder-gray-500 focus-visible:ring-purple-300 focus-visible:border-purple-300"
         />
       </div>
 
       {filteredNewsletters.length === 0 ? (
         <div className="text-center py-16 bg-gray-50 rounded-md">
-          <h3 className="text-xl font-light text-black mb-2 uppercase tracking-wider">No results found</h3>
+          <h3 className="text-xl font-medium text-black mb-2">No results found</h3>
           <p className="text-gray-600">Try adjusting your search terms or filters</p>
         </div>
       ) : (

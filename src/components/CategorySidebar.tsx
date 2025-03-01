@@ -41,13 +41,13 @@ const CategorySidebar = ({
             }`}
           >
             <div className="flex items-center gap-3">
-              <span>
+              <span className={selectedCategory === category.id ? "text-purple-600" : ""}>
                 {category.icon}
               </span>
               <span className="text-sm uppercase tracking-wider font-light">{category.name}</span>
             </div>
             {unreadCounts[category.id as string] > 0 && (
-              <span className="text-xs font-light bg-gray-100 text-black px-2 py-0.5">
+              <span className="text-xs font-light bg-purple-100 text-purple-700 px-2 py-0.5 rounded">
                 {unreadCounts[category.id as string]}
               </span>
             )}
@@ -71,13 +71,13 @@ const CategorySidebar = ({
             }`}
           >
             <div className="flex items-center gap-3">
-              <span>
+              <span className={selectedCategory === category.id ? "text-purple-600" : ""}>
                 {category.icon}
               </span>
               <span className="text-sm uppercase tracking-wider font-light">{category.name}</span>
             </div>
             {unreadCounts[category.id] > 0 && (
-              <span className="text-xs font-light bg-gray-100 text-black px-2 py-0.5">
+              <span className="text-xs font-light bg-purple-100 text-purple-700 px-2 py-0.5 rounded">
                 {unreadCounts[category.id]}
               </span>
             )}

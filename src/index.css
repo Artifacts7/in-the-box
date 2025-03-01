@@ -36,6 +36,11 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+    
+    /* Adding purple theme colors */
+    --purple-primary: 265 83% 73%;
+    --purple-secondary: 270 76% 94%;
+    --purple-accent: 266 100% 64%;
   }
 }
 
@@ -60,7 +65,7 @@
   }
   
   .subscribe-button {
-    @apply inline-flex items-center text-gray-600 hover:text-black transition-colors duration-200 font-medium text-sm;
+    @apply inline-flex items-center text-purple-600 hover:text-purple-800 transition-colors duration-200 font-medium text-sm;
   }
   
   .newsletter-title {
@@ -76,10 +81,10 @@
   }
 
   .sidebar-category-selected {
-    @apply text-black border-l-2 border-black bg-gray-100;
+    @apply text-purple-700 bg-purple-50 border-l-2 border-purple-500;
   }
 
   .sidebar-category-normal {
-    @apply text-gray-600 hover:text-black border-l-2 border-transparent hover:border-gray-300;
+    @apply text-gray-600 hover:text-purple-700 border-l-2 border-transparent hover:border-purple-200;
   }
 }
