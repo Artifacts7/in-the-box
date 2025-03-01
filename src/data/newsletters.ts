@@ -6,7 +6,7 @@ export const newsletters: Newsletter[] = [
     id: "1",
     title: "Artifacts Tech",
     description: "Artifacts is an experiment, a playground, a challenge about stories and ideas on how technology has changed and reshaped us, our society, and our politics. But it's also about how politics and policies are grappling with technology.",
-    sender: "Artifacts Tech Newsletter",
+    sender: "Lorenzo Ancona",
     date: "May 15, 2023",
     isRead: false,
     isStarred: true,
