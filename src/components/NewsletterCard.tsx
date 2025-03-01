@@ -1,5 +1,5 @@
 
-import { ArrowRight, Mail, Clock, Tag } from "lucide-react";
+import { ArrowRight, Mail, Clock, Tag, Star } from "lucide-react";
 import { Newsletter } from "../types/Newsletter";
 import { useState } from "react";
 import { useToast } from "../components/ui/use-toast";
@@ -53,9 +53,14 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
           <Mail className="text-white" size={18} />
         </div>
         <div className="flex-1">
-          <h3 className={`text-lg font-semibold ${newsletter.isRead ? "text-newsletter-mediumGray" : "text-newsletter-darkGray"}`}>
-            {newsletter.title}
-          </h3>
+          <div className="flex items-center justify-between">
+            <h3 className={`text-lg font-semibold ${newsletter.isRead ? "text-newsletter-mediumGray" : "text-newsletter-darkGray"}`}>
+              {newsletter.title}
+            </h3>
+            {newsletter.isStarred && (
+              <Star className="text-yellow-400 fill-yellow-400" size={18} />
+            )}
+          </div>
           <div className="flex items-center text-xs text-newsletter-mediumGray mt-1 gap-3">
             {newsletter.sender && <span>{newsletter.sender}</span>}
             {newsletter.date && (

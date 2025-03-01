@@ -5,8 +5,10 @@ export interface Newsletter {
   description: string;
   sender?: string;
   date?: string;
-  isRead?: boolean;
+  isRead: boolean;
+  isStarred?: boolean;
+  category: string;
   imageUrl?: string;
   linkUrl?: string;
-  category?: string;
+  content?: string;
 }

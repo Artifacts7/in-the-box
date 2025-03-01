@@ -9,12 +9,14 @@ interface NewsletterListProps {
   newsletters: Newsletter[];
   selectedNewsletterID: string | null;
   onNewsletterSelect: (id: string) => void;
+  selectedCategory: string | null;
 }
 
 const NewsletterList = ({ 
   newsletters, 
   selectedNewsletterID,
-  onNewsletterSelect 
+  onNewsletterSelect,
+  selectedCategory
 }: NewsletterListProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState<"all" | "unread" | "read">("all");
@@ -32,7 +34,14 @@ const NewsletterList = ({
       (filter === "unread" && !newsletter.isRead) || 
       (filter === "read" && newsletter.isRead);
     
-    return matchesSearch && matchesReadStatus;
+    // Category filter
+    const matchesCategory = 
+      selectedCategory === null || 
+      selectedCategory === "unread" ? !newsletter.isRead : 
+      selectedCategory === "starred" ? newsletter.isStarred : 
+      newsletter.category === selectedCategory;
+    
+    return matchesSearch && matchesReadStatus && matchesCategory;
   });
 
   return (

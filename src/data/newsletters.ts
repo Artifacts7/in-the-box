@@ -9,6 +9,7 @@ export const newsletters: Newsletter[] = [
     sender: "Artifacts Tech Newsletter",
     date: "May 15, 2023",
     isRead: false,
+    isStarred: true,
     category: "Technology",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
     linkUrl: "https://artifactstech.substack.com/"
@@ -20,6 +21,7 @@ export const newsletters: Newsletter[] = [
     sender: "Business Insider",
     date: "May 12, 2023",
     isRead: true,
+    isStarred: false,
     category: "Business",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
     linkUrl: "https://example.com/digital-transformation"
@@ -31,6 +33,7 @@ export const newsletters: Newsletter[] = [
     sender: "Literary Circle",
     date: "May 10, 2023",
     isRead: false,
+    isStarred: false,
     category: "Culture",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
     linkUrl: "https://example.com/book-recommendations"
@@ -42,6 +45,7 @@ export const newsletters: Newsletter[] = [
     sender: "Dev Insights",
     date: "May 8, 2023",
     isRead: true,
+    isStarred: true,
     category: "Technology",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
     linkUrl: "https://example.com/web-dev-trends"
@@ -53,6 +57,7 @@ export const newsletters: Newsletter[] = [
     sender: "WorkPlace Innovation",
     date: "May 5, 2023",
     isRead: false,
+    isStarred: false,
     category: "Business",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
     linkUrl: "https://example.com/future-work"
@@ -64,8 +69,60 @@ export const newsletters: Newsletter[] = [
     sender: "Mindful Tech",
     date: "May 1, 2023",
     isRead: true,
+    isStarred: false,
     category: "Lifestyle",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
     linkUrl: "https://example.com/minimalist-tech"
+  },
+  {
+    id: "7",
+    title: "Sustainable Fashion Guide",
+    description: "Discover emerging sustainable fashion brands and learn about eco-friendly materials revolutionizing the industry. This month's issue includes interviews with designers committed to ethical production practices.",
+    sender: "Eco Style Magazine",
+    date: "April 28, 2023",
+    isRead: false,
+    isStarred: true,
+    category: "Lifestyle",
+    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
+    linkUrl: "https://example.com/sustainable-fashion"
+  },
+  {
+    id: "8",
+    title: "Political Analysis: Global Relations",
+    description: "In-depth analysis of shifting geopolitical landscapes and their impacts on international trade, security, and diplomacy. Features perspectives from leading political scientists and foreign policy experts.",
+    sender: "World Affairs Institute",
+    date: "April 25, 2023",
+    isRead: true,
+    isStarred: false,
+    category: "Politics",
+    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
+    linkUrl: "https://example.com/political-analysis"
   }
 ];
+
+// Extract unique categories for sidebar
+export const getCategories = (): string[] => {
+  const categories = new Set(newsletters.map(newsletter => newsletter.category));
+  return Array.from(categories);
+};
+
+// Get unread counts by category
+export const getUnreadCounts = (): Record<string, number> => {
+  const counts: Record<string, number> = {
+    unread: 0
+  };
+  
+  newsletters.forEach(newsletter => {
+    // Count by category
+    if (!counts[newsletter.category]) {
+      counts[newsletter.category] = 0;
+    }
+    
+    if (!newsletter.isRead) {
+      counts[newsletter.category]++;
+      counts.unread++;
+    }
+  });
+  
+  return counts;
+};
