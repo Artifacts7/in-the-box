@@ -50,12 +50,22 @@ const CategorySidebar = ({
               <span className="text-sm uppercase tracking-wider">{category.name}</span>
             </div>
             <div className="flex items-center">
-              {unreadCounts[category.id as string] > 0 && (
+              {/* Display count for All category using the total value */}
+              {category.id === null && (
                 <span 
                   className="bg-purple-100 text-purple-700 py-0.5 rounded-none px-[8px] text-xs mx-[5px]" 
                   style={{ fontFamily: "'VT323', monospace" }}
                 >
-                  {unreadCounts[category.id as string]}
+                  {unreadCounts.total}
+                </span>
+              )}
+              {/* Display count for each specific category */}
+              {category.id !== null && unreadCounts[category.id] > 0 && (
+                <span 
+                  className="bg-purple-100 text-purple-700 py-0.5 rounded-none px-[8px] text-xs mx-[5px]" 
+                  style={{ fontFamily: "'VT323', monospace" }}
+                >
+                  {unreadCounts[category.id]}
                 </span>
               )}
               {selectedCategory !== category.id && (

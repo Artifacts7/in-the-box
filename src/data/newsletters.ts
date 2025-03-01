@@ -16,7 +16,7 @@ export const newsletters: Newsletter[] = [
   },
   {
     id: "2",
-    title: "What’s up EU",
+    title: "What's up EU",
     description: "What's up EU puts together a concise, well-documented, and informative weekly wrap-up of the news that matters at a continental scale — from a European perspective.",
     sender: "Business Insider",
     date: "May 12, 2023",
@@ -34,22 +34,20 @@ export const getCategories = (): string[] => {
   return Array.from(categories);
 };
 
-// Get unread counts by category
+// Get counts by category
 export const getUnreadCounts = (): Record<string, number> => {
   const counts: Record<string, number> = {
-    unread: 0
+    total: newsletters.length
   };
   
+  // Count total newsletters by category
   newsletters.forEach(newsletter => {
-    // Count by category
     if (!counts[newsletter.category]) {
       counts[newsletter.category] = 0;
     }
     
-    if (!newsletter.isRead) {
-      counts[newsletter.category]++;
-      counts.unread++;
-    }
+    // Count each newsletter in its category
+    counts[newsletter.category]++;
   });
   
   return counts;
