@@ -30,7 +30,7 @@ export const newsletters: Newsletter[] = [
     id: "3",
     title: "EU AI Act Newsletter",
     description: "Subscribe to receive the biweekly EU AI Act Newsletter to your inbox. Never miss an update.",
-    sender: "Business Insider",
+    sender: "Risto Uuk",
     date: "May 12, 2023",
     isRead: true,
     isStarred: false,
