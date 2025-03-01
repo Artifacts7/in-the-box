@@ -36,7 +36,31 @@ export const newsletters: Newsletter[] = [
     isStarred: false,
     category: "Technology",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
-    linkUrl: "https://whatsupeuenglish.substack.com/"
+    linkUrl: "https://artificialintelligenceact.substack.com/"
+  },
+  {
+    id: "4",
+    title: "Digital Politics",
+    description: "This newsletter unpacks the messy, fascinating world of digital policy and politics—the rules, battles, and debates shaping our online lives.",
+    sender: "Mark Scott",
+    date: "May 12, 2023",
+    isRead: true,
+    isStarred: false,
+    category: "Technology",
+    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
+    linkUrl: "https://www.digitalpolitics.co/"
+  },
+  {
+    id: "5",
+    title: "Digital Politics",
+    description: "A bi-weekly briefing on the intersections of digital culture, AI, cybersecurity, digital rights, data privacy, and tech policy.",
+    sender: "Carola Frediani",
+    date: "May 12, 2023",
+    isRead: true,
+    isStarred: false,
+    category: "Technology",
+    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
+    linkUrl: "https://conflicts.digital/"
   },
 ];
 
