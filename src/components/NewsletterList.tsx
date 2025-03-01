@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Newsletter } from "../types/Newsletter";
 import NewsletterCard from "./NewsletterCard";
 import { Input } from "../components/ui/input";
-import { Search } from "lucide-react";
+import { Search, FileSearch } from "lucide-react";
 
 interface NewsletterListProps {
   newsletters: Newsletter[];
@@ -38,7 +38,7 @@ const NewsletterList = ({
   return (
     <div className="w-full">
       <div className="relative mb-6">
-        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-600">
           <Search size={18} />
         </div>
         <Input
@@ -51,12 +51,13 @@ const NewsletterList = ({
       </div>
 
       {filteredNewsletters.length === 0 ? (
-        <div className="text-center py-16 bg-gray-50 rounded-md">
+        <div className="text-center py-16 bg-gray-50 rounded-md border border-gray-200">
+          <FileSearch size={48} className="mx-auto mb-4 text-gray-400" />
           <h3 className="text-xl font-medium text-black mb-2">No results found</h3>
           <p className="text-gray-600">Try adjusting your search terms or filters</p>
         </div>
       ) : (
-        <div className="space-y-0 divide-y divide-gray-200">
+        <div className="space-y-0">
           {filteredNewsletters.map((newsletter) => (
             <NewsletterCard 
               key={newsletter.id} 

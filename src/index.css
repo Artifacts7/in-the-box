@@ -37,7 +37,10 @@
 
     --radius: 0.5rem;
     
-    /* Adding purple theme colors */
+    /* Windows XP theme colors */
+    --winxp-blue: 207 83% 36%;
+    --winxp-green: 120 60% 50%;
+    --winxp-accent: 56 100% 50%;
     --purple-primary: 265 83% 73%;
     --purple-secondary: 270 76% 94%;
     --purple-accent: 266 100% 64%;
@@ -52,20 +55,51 @@
   body {
     @apply bg-white text-black antialiased;
     font-family: 'Inter', sans-serif;
+    cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAAB3RJTUUH5QQQCRURgf0nZwAAA8JJREFUWMPtll1oHFUUx3/3zu7sbrbZpGnSpE3SpGlMY5o2JRiTxhDri9bUotKIICj44oOIYB9EEEVfRJ98EPShINIXfVFpwVosojYltQhVW2JpkzZNmthNmmySTbL7Mft1fJidzZLd7G4LfRA8MMy9M+ee//mfc+6ZK7TWLGXTy5pA8cLv/Lj7xXsG/eLCw6WfnriQvs++XAg8e6DnYOtm/j5yllf6R4cj4V0P7Xl5RwGBhW5w38Y1jcePvD15/OV3xntu5Y0ld3cBdXSbJ3xJa926ODZA/K29jzV3DXe9dXy24cDhnXQ8+/JjOx8cP0OXV58/BJ0vPbDK0vu1Xq7yJRFwm+mQm9bfv/vdz6c+fGNfIW9q5OBb4OuYSGbZ++XZ0ZyAB7zr0DmA+8dqk/H8jYa81ooGby4NbpgTsFTsZB17d/VoF7o51uDOiYTqo+sNm2yqw7kEu66KBVBGw0NpBjZmGG/Nk6s0yJcLUpmIPXhO4xvU1E1qPEOiKNlVhpUKCuUCIQSzS5G1GHaS2e4Ixf1Bbm2JE1nvIYTAVNvZVJVGKYVtO91WCm+yiieUxSO11vbEf+WC0MO6I0tLr+SfF03lO2Hkpqbc/2IwwmhdGiWgw9+Ab7oW+/JtYoEnCPgDtIWCiFwlEQJXaQoZE5O0ybWWksVaXcQoEXsW6hpnZzRu6JVVX4TmO04mZxKPzLB7U4jUj9DWFKRjS5jh0SRvn/yRj77+jcOfnmVT26q7QmA4/4t+GY+N6UzmUlHodNhKsUJK0fhb5I4g2A5e0cCV4B+uxAQPIwqjDDXfZteWMHvbw1imSSadYXVtDXK5BEBF4L3oZef3HwZ1NvdDoXwmJ3Jgb9nE2uAGpyTVLpZnDdNlQ/jveKaFMAwwBBgCpDUr4IDBH9M88Xwfv44keHdDPZV1EQI1KwkGq6gIhRcisOXRj/A1dmIEGgn4fLS0tNDc1ExNTS3hcIglE3DLr5S6G75S+Hy+f8NXWE6YpklNMEhNMEQwGGRtvEFubGuLz8nfiUDhDkqrK/kcWmu01mXnlVJMTEjyyXGy2SxKKQoCoQeXRgVMKcnn8yit5wgURaL/GJRSBWGleN6e6tKcP3uW9/fsKYYqNVSWvzUuLFjK88rzF2g19FLtf4GWnAqllMUXkHMJRceTXP/r0vzsw4NM3hhZ8A74q+8an/hjgpOff0L//n5GBq+RVzku/XKBTCq5eEPSWi/d5h/wfwMsOYF/AEJWOr7cK6XnAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTA0LTE2VDA5OjIxOjE3KzAwOjAwCmFGlgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMS0wNC0xNlQwOToyMToxNyswMDowMHs8/ioAAAAASUVORK5CYII='), auto;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-medium tracking-tight;
   }
+  
+  button, a {
+    cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAAB3RJTUUH5QQQCRURgf0nZwAAA8JJREFUWMPtll1oHFUUx3/3zu7sbrbZpGnSpE3SpGlMY5o2JRiTxhDri9bUotKIICj44oOIYB9EEEVfRJ98EPShINIXfVFpwVosojYltQhVW2JpkzZNmthNmmySTbL7Mft1fJidzZLd7G4LfRA8MMy9M+ee//mfc+6ZK7TWLGXTy5pA8cLv/Lj7xXsG/eLCw6WfnriQvs++XAg8e6DnYOtm/j5yllf6R4cj4V0P7Xl5RwGBhW5w38Y1jcePvD15/OV3xntu5Y0ld3cBdXSbJ3xJa926ODZA/K29jzV3DXe9dXy24cDhnXQ8+/JjOx8cP0OXV58/BJ0vPbDK0vu1Xq7yJRFwm+mQm9bfv/vdz6c+fGNfIW9q5OBb4OuYSGbZ++XZ0ZyAB7zr0DmA+8dqk/H8jYa81ooGby4NbpgTsFTsZB17d/VoF7o51uDOiYTqo+sNm2yqw7kEu66KBVBGw0NpBjZmGG/Nk6s0yJcLUpmIPXhO4xvU1E1qPEOiKNlVhpUKCuUCIQSzS5G1GHaS2e4Ixf1Bbm2JE1nvIYTAVNvZVJVGKYVtO91WCm+yiieUxSO11vbEf+WC0MO6I0tLr+SfF03lO2Hkpqbc/2IwwmhdGiWgw9+Ab7oW+/JtYoEnCPgDtIWCiFwlEQJXaQoZE5O0ybWWksVaXcQoEXsW6hpnZzRu6JVVX4TmO04mZxKPzLB7U4jUj9DWFKRjS5jh0SRvn/yRj77+jcOfnmVT26q7QmA4/4t+GY+N6UzmUlHodNhKsUJK0fhb5I4g2A5e0cCV4B+uxAQPIwqjDDXfZteWMHvbw1imSSadYXVtDXK5BEBF4L3oZef3HwZ1NvdDoXwmJ3Jgb9nE2uAGpyTVLpZnDdNlQ/jveKaFMAwwBBgCpDUr4IDBH9M88Xwfv44keHdDPZV1EQI1KwkGq6gIhRcisOXRj/A1dmIEGgn4fLS0tNDc1ExNTS3hcIglE3DLr5S6G75S+Hy+f8NXWE6YpklNMEhNMEQwGGRtvEFubGuLz8nfiUDhDkqrK/kcWmu01mXnlVJMTEjyyXGy2SxKKQoCoQeXRgVMKcnn8yit5wgURaL/GJRSBWGleN6e6tKcP3uW9/fsKYYqNVSWvzUuLFjK88rzF2g19FLtf4GWnAqllMUXkHMJRceTXP/r0vzsw4NM3hhZ8A74q+8an/hjgpOff0L//n5GBq+RVzku/XKBTCq5eEPSWi/d5h/wfwMsOYF/AEJWOr7cK6XnAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTA0LTE2VDA5OjIxOjE3KzAwOjAwCmFGlgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMS0wNC0xNlQwOToyMToxNyswMDowMHs8/ioAAAAASUVORK5CYII='), pointer;
+  }
+  
+  /* Windows XP-style focus elements */
+  *:focus {
+    outline: 2px dotted #0078d7;
+    outline-offset: 2px;
+  }
 }
 
 @layer components {
   .newsletter-card {
-    @apply bg-white rounded-md p-5 transition-all duration-300 border-l-0 border-t-0 border-r-0 border-b-0;
+    @apply bg-white rounded-md p-5 transition-all duration-300 border border-gray-200;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  }
+  
+  .newsletter-card:hover {
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.1);
+    border-color: #9c83f3;
+  }
+  
+  .newsletter-card.selected {
+    border-left: 4px solid #7e69ab;
+    background-color: #f5f0ff;
+    box-shadow: inset 0 0 3px rgba(126, 105, 171, 0.2);
   }
   
   .subscribe-button {
     @apply inline-flex items-center text-purple-600 hover:text-purple-800 transition-colors duration-200 font-medium text-sm;
+    padding: 4px 8px;
+    border-radius: 3px;
+    background: linear-gradient(to bottom, #f7f5ff 0%, #e5deff 100%);
+    border: 1px solid #d6bcfa;
+  }
+  
+  .subscribe-button:hover {
+    background: linear-gradient(to bottom, #e5deff 0%, #d6bcfa 100%);
   }
   
   .newsletter-title {
@@ -78,13 +112,48 @@
 
   .sidebar-category {
     @apply w-full text-left px-4 py-3 flex items-center justify-between rounded-md transition-colors;
+    background: linear-gradient(to bottom, #ffffff 0%, #f7f7f7 100%);
+    border: 1px solid transparent;
+  }
+  
+  .sidebar-category:hover {
+    background: linear-gradient(to bottom, #f5f0ff 0%, #e5deff 100%);
+    border: 1px solid #d6bcfa;
   }
 
   .sidebar-category-selected {
-    @apply text-purple-700 bg-purple-50 border-l-2 border-purple-500;
+    @apply text-purple-700 border-l-2 border-purple-500;
+    background: linear-gradient(to bottom, #e5deff 0%, #d6bcfa 100%);
+    box-shadow: inset 0 0 3px rgba(126, 105, 171, 0.2);
   }
 
   .sidebar-category-normal {
     @apply text-gray-600 hover:text-purple-700 border-l-2 border-transparent hover:border-purple-200;
   }
+  
+  /* Windows XP style header */
+  .winxp-header {
+    @apply bg-blue-600 text-white px-4 py-3 flex items-center;
+    background: linear-gradient(to bottom, #2570bc 0%, #0f4d92 100%);
+    border-bottom: 1px solid #003c77;
+  }
+  
+  /* Windows XP style buttons */
+  .winxp-button {
+    background: linear-gradient(to bottom, #f7f7f7 0%, #e3e3e3 100%);
+    border: 1px solid #b8b8b8;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    padding: 4px 10px;
+  }
+  
+  .winxp-button:hover {
+    background: linear-gradient(to bottom, #e3e3e3 0%, #d3d3d3 100%);
+  }
+  
+  .winxp-button:active {
+    background: linear-gradient(to bottom, #d3d3d3 0%, #e3e3e3 100%);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  }
 }
+

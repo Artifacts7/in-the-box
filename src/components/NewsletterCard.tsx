@@ -1,7 +1,6 @@
 
 import { ArrowRight, Tag } from "lucide-react";
 import { Newsletter } from "../types/Newsletter";
-import { useState } from "react";
 import { useToast } from "../components/ui/use-toast";
 
 interface NewsletterCardProps {
@@ -31,8 +30,7 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
 
   return (
     <div 
-      className={`newsletter-card cursor-pointer transition-all duration-200 py-4 hover:bg-gray-50
-      ${isSelected ? "bg-purple-50 border-l-4 border-purple-500" : "border-transparent"}`}
+      className={`newsletter-card cursor-pointer py-4 mb-2 ${isSelected ? "selected" : ""}`}
       onClick={onClick}
     >
       <div className="flex items-start gap-4 mb-2">
@@ -61,7 +59,7 @@ const NewsletterCard = ({ newsletter, isSelected = false, onClick }: NewsletterC
       <div className="mt-3 pt-3 border-t border-gray-200">
         <button 
           onClick={handleSubscribeButtonClick} 
-          className="text-purple-600 hover:text-purple-800 text-left flex items-center gap-1 font-medium text-sm transition-colors"
+          className="subscribe-button flex items-center gap-1"
         >
           <span>Subscribe</span>
           <ArrowRight className="w-3.5 h-3.5" />
