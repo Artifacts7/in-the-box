@@ -32,7 +32,7 @@ const Index = () => {
   return <div className="min-h-screen flex flex-col bg-white text-black">
       <Header onMenuClick={toggleMobileCategories} />
       
-      <main className="flex-1 grid md:grid-cols-[272px_1fr] relative max-w-6xl mx-auto px-4 md:px-8 pt-4 md:pt-6">
+      <main className="flex-1 grid md:grid-cols-[272px_1fr] gap-x-8 relative max-w-6xl mx-auto px-4 md:px-8 pt-6 md:pt-8">
         {/* Mobile category dropdown button */}
         <div className="md:hidden py-2 px-4 bg-slate-50 relative">
           <button 
@@ -76,7 +76,7 @@ const Index = () => {
         </div>
         
         {/* Desktop Sidebar - Categories */}
-        <div className="hidden md:block border-r border-gray-200">
+        <div className="hidden md:block">
           <CategorySidebar 
             categories={categories} 
             selectedCategory={selectedCategory} 
@@ -86,8 +86,8 @@ const Index = () => {
         </div>
         
         {/* Main Section - Newsletter List */}
-        <div className="w-full bg-white pt-2 px-4 overflow-y-auto">
-          <div className="max-w-4xl mx-auto">
+        <div className="w-full bg-white pt-2 px-4">
+          <div className="max-w-4xl">
             <NewsletterList 
               newsletters={newsletters} 
               selectedNewsletterID={selectedNewsletterID} 

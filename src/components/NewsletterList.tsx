@@ -77,35 +77,40 @@ const NewsletterList = ({
   );
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full max-w-4xl">
       <div className="mb-8">
-        <div className="flex items-center mb-4 px-1">
+        <div className="flex items-start mb-5 px-1">
           <button 
             onClick={handleIconClick} 
-            className="cursor-pointer mr-3"
+            className="cursor-pointer mr-3 mt-1"
             style={{ 
               background: "linear-gradient(to bottom, #f0f0f0, #e1e1e1)",
               border: "1px solid #c0c0c0",
               borderRadius: "4px",
-              padding: "6px",
+              padding: "8px",
               boxShadow: "2px 2px 0px rgba(0,0,0,0.1)"
             }}
           >
             {getCategoryIcon()}
           </button>
-          <h2 
-            className="text-2xl font-bold uppercase tracking-widest text-left"
-            style={{ 
-              fontFamily: "'VT323', monospace", 
-              color: '#7E69AB',
-              textShadow: "1px 1px 0 rgba(0,0,0,0.1)"
-            }}
-          >
-            {selectedCategory === null ? "All Newsletters" : selectedCategory}
-          </h2>
+          <div>
+            <h2 
+              className="text-2xl font-bold uppercase tracking-widest text-left mb-1"
+              style={{ 
+                fontFamily: "'VT323', monospace", 
+                color: '#7E69AB',
+                textShadow: "2px 2px 0 rgba(0,0,0,0.1)"
+              }}
+            >
+              {selectedCategory === null ? "All Newsletters" : selectedCategory}
+            </h2>
+            <p className="text-gray-600 text-sm">
+              {filteredNewsletters.length} newsletter{filteredNewsletters.length !== 1 ? 's' : ''} available
+            </p>
+          </div>
         </div>
         
-        <div className="relative w-full text-left">
+        <div className="relative w-full text-left mt-6">
           <div className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-600">
             <Search size={18} />
           </div>

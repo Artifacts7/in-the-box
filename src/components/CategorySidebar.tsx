@@ -1,3 +1,4 @@
+
 import { Mail, ChevronRight, Cpu, Vote, Newspaper, BookOpen, Music, Utensils, Users } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -69,15 +70,20 @@ const CategorySidebar = ({
   
   return (
     <div 
-      className="w-full md:w-72 bg-white h-auto md:h-full overflow-y-auto py-4 md:py-6 border-b md:border-b-0 md:border-r border-gray-200 transition-all duration-300 ease-in-out animate-fade-in" 
+      className="w-full md:w-72 bg-white h-auto md:h-full overflow-y-auto py-6 border-b md:border-b-0 border-gray-200 transition-all duration-300 ease-in-out animate-fade-in" 
       style={{ fontFamily: "'VT323', monospace" }}
     >
-      <div className="space-y-1 px-4">
+      <div className="space-y-2 px-4">
+        <h2 className="text-xl font-bold uppercase tracking-wider text-purple-700 mb-4" style={{ 
+          fontFamily: "'VT323', monospace",
+          textShadow: "1px 1px 0 rgba(0,0,0,0.1)"
+        }}>Categories</h2>
+        
         {allCategories.map(category => (
           <button 
             key={category.id?.toString() || "all"} 
             onClick={() => handleCategoryClick(category.id)} 
-            className={`sidebar-category w-full flex items-center justify-between p-2.5 transition-all duration-200 ${
+            className={`sidebar-category w-full flex items-center justify-between p-3 transition-all duration-200 ${
               selectedCategory === category.id ? "sidebar-category-selected" : "sidebar-category-normal"
             }`} 
             style={{ fontFamily: "'VT323', monospace" }}
