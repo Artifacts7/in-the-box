@@ -26,26 +26,26 @@ const NewsletterList = ({
   // Get the appropriate icon for the selected category
   const getCategoryIcon = () => {
     if (selectedCategory === null) {
-      return <Mail size={30} className={`text-purple-600 ${animatingIcon ? 'translate-x-1' : ''} transition-transform duration-300`} />;
+      return <Mail size={24} className={`text-purple-600 ${animatingIcon ? 'translate-x-1' : ''} transition-transform duration-300`} />;
     }
     
     switch(selectedCategory.toLowerCase()) {
       case "technology":
-        return <Cpu size={30} className={`text-purple-600 ${animatingIcon ? 'translate-y-1' : ''} transition-transform duration-300`} />;
+        return <Cpu size={24} className={`text-purple-600 ${animatingIcon ? 'translate-y-1' : ''} transition-transform duration-300`} />;
       case "politics":
-        return <Vote size={30} className={`text-purple-600 ${animatingIcon ? 'rotate-12' : ''} transition-transform duration-300`} />;
+        return <Vote size={24} className={`text-purple-600 ${animatingIcon ? 'rotate-12' : ''} transition-transform duration-300`} />;
       case "news":
-        return <Newspaper size={30} className={`text-purple-600 ${animatingIcon ? 'scale-110' : ''} transition-transform duration-300`} />;
+        return <Newspaper size={24} className={`text-purple-600 ${animatingIcon ? 'scale-110' : ''} transition-transform duration-300`} />;
       case "education":
-        return <BookOpen size={30} className={`text-purple-600 ${animatingIcon ? 'translate-y-1' : ''} transition-transform duration-300`} />;
+        return <BookOpen size={24} className={`text-purple-600 ${animatingIcon ? 'translate-y-1' : ''} transition-transform duration-300`} />;
       case "entertainment":
-        return <Music size={30} className={`text-purple-600 ${animatingIcon ? 'scale-110' : ''} transition-transform duration-300`} />;
+        return <Music size={24} className={`text-purple-600 ${animatingIcon ? 'scale-110' : ''} transition-transform duration-300`} />;
       case "food":
-        return <Utensils size={30} className={`text-purple-600 ${animatingIcon ? 'rotate-12' : ''} transition-transform duration-300`} />;
+        return <Utensils size={24} className={`text-purple-600 ${animatingIcon ? 'rotate-12' : ''} transition-transform duration-300`} />;
       case "social":
-        return <Users size={30} className={`text-purple-600 ${animatingIcon ? 'translate-x-1' : ''} transition-transform duration-300`} />;
+        return <Users size={24} className={`text-purple-600 ${animatingIcon ? 'translate-x-1' : ''} transition-transform duration-300`} />;
       default:
-        return <Mail size={30} className={`text-purple-600 ${animatingIcon ? 'scale-105' : ''} transition-transform duration-300`} />;
+        return <Mail size={24} className={`text-purple-600 ${animatingIcon ? 'scale-105' : ''} transition-transform duration-300`} />;
     }
   };
   
@@ -76,9 +76,15 @@ const NewsletterList = ({
     a.title.localeCompare(b.title)
   );
 
+  // Fixed list height to prevent shifting
+  const listContainerStyle = {
+    minHeight: sortedNewsletters.length > 0 ? '500px' : '300px',
+    width: '100%'
+  };
+
   return (
     <div className="w-full max-w-4xl mx-auto">
-      <div className="mb-8">
+      <div className="mb-6">
         <div className="flex items-center mb-4 px-1">
           <button 
             onClick={handleIconClick} 
@@ -87,14 +93,14 @@ const NewsletterList = ({
               background: "linear-gradient(to bottom, #f0f0f0, #e1e1e1)",
               border: "1px solid #c0c0c0",
               borderRadius: "4px",
-              padding: "6px",
+              padding: "5px",
               boxShadow: "2px 2px 0px rgba(0,0,0,0.1)"
             }}
           >
             {getCategoryIcon()}
           </button>
           <h2 
-            className="text-2xl font-bold uppercase tracking-widest text-left"
+            className="text-xl font-bold uppercase tracking-widest text-left"
             style={{ 
               fontFamily: "'VT323', monospace", 
               color: '#7E69AB',
@@ -126,41 +132,43 @@ const NewsletterList = ({
         </div>
       </div>
 
-      {sortedNewsletters.length === 0 ? (
-        <div 
-          className="text-center py-12 md:py-16 bg-gray-50 border border-gray-200" 
-          style={{ 
-            boxShadow: '4px 4px 0px rgba(0,0,0,0.1)',
-            fontFamily: "'VT323', monospace"
-          }}
-        >
-          <FileSearch size={48} className="mx-auto mb-4 text-purple-400" />
-          <h3 
-            className="text-xl font-medium text-black mb-2" 
-            style={{ fontFamily: "'VT323', monospace" }}
+      <div style={listContainerStyle}>
+        {sortedNewsletters.length === 0 ? (
+          <div 
+            className="text-center py-12 md:py-16 bg-gray-50 border border-gray-200" 
+            style={{ 
+              boxShadow: '4px 4px 0px rgba(0,0,0,0.1)',
+              fontFamily: "'VT323', monospace"
+            }}
           >
-            No results found
-          </h3>
-          <p 
-            className="text-gray-600" 
-            style={{ fontFamily: "'VT323', monospace" }}
-          >
-            Try adjusting your search terms or filters
-          </p>
-        </div>
-      ) : (
-        <div className="space-y-4">
-          {sortedNewsletters.map((newsletter) => (
-            <NewsletterCard 
-              key={newsletter.id} 
-              newsletter={newsletter} 
-              isSelected={newsletter.id === selectedNewsletterID}
-              onClick={() => onNewsletterSelect(newsletter.id)}
-              onTagClick={onCategorySelect}
-            />
-          ))}
-        </div>
-      )}
+            <FileSearch size={48} className="mx-auto mb-4 text-purple-400" />
+            <h3 
+              className="text-xl font-medium text-black mb-2" 
+              style={{ fontFamily: "'VT323', monospace" }}
+            >
+              No results found
+            </h3>
+            <p 
+              className="text-gray-600" 
+              style={{ fontFamily: "'VT323', monospace" }}
+            >
+              Try adjusting your search terms or filters
+            </p>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {sortedNewsletters.map((newsletter) => (
+              <NewsletterCard 
+                key={newsletter.id} 
+                newsletter={newsletter} 
+                isSelected={newsletter.id === selectedNewsletterID}
+                onClick={() => onNewsletterSelect(newsletter.id)}
+                onTagClick={onCategorySelect}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

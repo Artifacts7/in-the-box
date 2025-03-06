@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { newsletters, getCategories, getUnreadCounts } from "../data/newsletters";
 import Header from "../components/Header";
 import NewsletterList from "../components/NewsletterList";
@@ -13,6 +13,7 @@ const Index = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const categories = getCategories();
   const unreadCounts = getUnreadCounts();
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown on larger screens
   useEffect(() => {
@@ -21,20 +22,34 @@ const Index = () => {
         setSidebarOpen(false);
       }
     };
+    
+    // Close dropdown when clicking outside
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setSidebarOpen(false);
+      }
+    };
+    
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    document.addEventListener('mousedown', handleClickOutside);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
   
   const toggleMobileCategories = () => {
     setSidebarOpen(!sidebarOpen);
   };
   
-  return <div className="min-h-screen flex flex-col bg-white text-black">
+  return (
+    <div className="min-h-screen flex flex-col bg-white text-black">
       <Header onMenuClick={toggleMobileCategories} />
       
       <main className="flex-1 flex flex-col md:flex-row relative">
         {/* Mobile category dropdown button */}
-        <div className="md:hidden py-3 px-4 bg-slate-50 relative">
+        <div className="md:hidden py-3 px-4 bg-slate-50 relative" ref={dropdownRef}>
           <button 
             onClick={toggleMobileCategories} 
             className="flex items-center justify-between w-full bg-white py-2 px-4 border border-purple-200 shadow-sm"
@@ -60,17 +75,15 @@ const Index = () => {
               className="absolute top-full left-0 right-0 z-20 bg-white border border-purple-100 shadow-lg md:hidden"
               style={{ boxShadow: "4px 4px 0px rgba(0,0,0,0.2)" }}
             >
-              <div className="max-h-[60vh] overflow-y-auto">
-                <CategorySidebar 
-                  categories={categories} 
-                  selectedCategory={selectedCategory} 
-                  onCategorySelect={category => {
-                    setSelectedCategory(category);
-                    setSidebarOpen(false);
-                  }} 
-                  unreadCounts={unreadCounts} 
-                />
-              </div>
+              <CategorySidebar 
+                categories={categories} 
+                selectedCategory={selectedCategory} 
+                onCategorySelect={category => {
+                  setSelectedCategory(category);
+                  setSidebarOpen(false);
+                }} 
+                unreadCounts={unreadCounts} 
+              />
             </div>
           )}
         </div>
@@ -103,6 +116,8 @@ const Index = () => {
       </main>
       
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default Index;

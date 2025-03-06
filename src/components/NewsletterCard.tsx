@@ -50,10 +50,11 @@ const NewsletterCard = ({
         border: '2px solid', 
         borderColor: isSelected ? '#8B5CF6' : '#e2e8f0',
         transition: 'all 0.2s ease',
-        fontFamily: "'VT323', monospace"
+        minHeight: '150px',
+        width: '100%'
       }}
     >
-      <div className="flex flex-col text-left">
+      <div className="flex flex-col text-left h-full">
         <div className="flex items-start justify-between mb-2">
           <h3 
             className="text-lg font-medium text-black"
@@ -99,7 +100,7 @@ const NewsletterCard = ({
         </div>
         
         <p 
-          className="newsletter-description text-sm text-gray-600 mb-3"
+          className="newsletter-description text-sm text-gray-600 mb-4 flex-grow"
           style={{ fontFamily: "'VT323', monospace" }}
         >
           {newsletter.description}
@@ -108,7 +109,7 @@ const NewsletterCard = ({
         {/* Subscribe button at the bottom for mobile screens */}
         <button 
           onClick={handleSubscribeButtonClick}
-          className="md:hidden self-start mt-2 inline-flex items-center gap-1 px-4 py-1.5 bg-purple-50 hover:bg-purple-100 transition-colors"
+          className="md:hidden self-start mt-auto inline-flex items-center gap-1 px-4 py-1.5 bg-purple-50 hover:bg-purple-100 transition-colors"
           style={{ 
             imageRendering: 'pixelated', 
             boxShadow: '2px 2px 0px rgba(0,0,0,0.1)',
