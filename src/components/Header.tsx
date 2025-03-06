@@ -1,3 +1,4 @@
+
 import { Menu } from "lucide-react";
 interface HeaderProps {
   onMenuClick?: () => void;
@@ -8,16 +9,17 @@ const Header = ({
   return <header className="py-8 md:py-10 bg-white border-b border-gray-200">
       <div className="max-w-5xl mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between gap-6">
-          <div className="flex items-center gap-6">
-            <div className="p-2 border-2 border-purple-200 rounded-none shadow-[3px_3px_0px_rgba(0,0,0,0.2)]" style={{
+          <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+            <div className="p-3 border-2 border-purple-200 rounded-none shadow-[4px_4px_0px_rgba(0,0,0,0.2)]" style={{
             background: "linear-gradient(to bottom, #f7f5ff 0%, #e5deff 100%)"
           }}>
-              <img src="/lovable-uploads/76c43e19-dd4e-42a8-9315-f676898aa4af.png" alt="In The Box Logo" className="w-24 md:w-28 h-auto object-contain" />
+              <img src="/lovable-uploads/76c43e19-dd4e-42a8-9315-f676898aa4af.png" alt="In The Box Logo" className="w-28 md:w-32 h-auto object-contain" />
             </div>
             <div className="text-left">
-              <h1 className="text-3xl md:text-4xl font-medium uppercase tracking-widest text-black mb-1" style={{
+              <h1 className="text-3xl md:text-5xl font-medium uppercase tracking-widest text-black mb-1" style={{
               fontFamily: "'VT323', monospace",
-              color: '#7E69AB'
+              color: '#7E69AB',
+              textShadow: "2px 2px 0px rgba(0,0,0,0.1)"
             }}>
                 In The Box
               </h1>
@@ -29,7 +31,16 @@ const Header = ({
             </div>
           </div>
           
-          
+          <button 
+            onClick={onMenuClick}
+            className="md:hidden p-2 border border-purple-200 rounded-none"
+            style={{
+              background: "linear-gradient(to bottom, #f7f5ff 0%, #e5deff 100%)",
+              boxShadow: "2px 2px 0px rgba(0,0,0,0.2)"
+            }}
+          >
+            <Menu size={24} className="text-purple-600" />
+          </button>
         </div>
       </div>
     </header>;

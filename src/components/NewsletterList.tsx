@@ -79,7 +79,7 @@ const NewsletterList = ({
   return (
     <div className="w-full max-w-4xl mx-auto">
       <div className="mb-8">
-        <div className="flex items-center mb-6 px-1">
+        <div className="flex items-center mb-4 px-1">
           <button 
             onClick={handleIconClick} 
             className="cursor-pointer mr-3"
@@ -87,8 +87,8 @@ const NewsletterList = ({
               background: "linear-gradient(to bottom, #f0f0f0, #e1e1e1)",
               border: "1px solid #c0c0c0",
               borderRadius: "4px",
-              padding: "4px",
-              boxShadow: "1px 1px 2px rgba(0,0,0,0.1)"
+              padding: "6px",
+              boxShadow: "2px 2px 0px rgba(0,0,0,0.1)"
             }}
           >
             {getCategoryIcon()}
@@ -105,7 +105,7 @@ const NewsletterList = ({
           </h2>
         </div>
         
-        <div className="relative max-w-[400px] mx-auto">
+        <div className="relative w-full text-left">
           <div className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-600">
             <Search size={18} />
           </div>
@@ -114,7 +114,7 @@ const NewsletterList = ({
             placeholder="Search newsletters..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-11 bg-gray-50 border-gray-200 text-black placeholder-gray-500 focus-visible:ring-purple-300 focus-visible:border-purple-300 w-full"
+            className="pl-11 bg-gray-50 border-gray-200 text-black placeholder-gray-500 focus-visible:ring-purple-300 focus-visible:border-purple-300 w-full max-w-[400px]"
             style={{ 
               borderRadius: '0', 
               fontFamily: "'VT323', monospace",

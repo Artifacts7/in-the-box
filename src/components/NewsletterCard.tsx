@@ -53,30 +53,30 @@ const NewsletterCard = ({
         fontFamily: "'VT323', monospace"
       }}
     >
-      {/* Subscribe button in top-right corner, aligned with title */}
-      <button 
-        onClick={handleSubscribeButtonClick}
-        className="subscribe-button absolute top-6 right-6 inline-flex items-center gap-1 px-4 py-1.5 bg-purple-50 hover:bg-purple-100 transition-colors"
-        style={{ 
-          imageRendering: 'pixelated', 
-          boxShadow: '1px 1px 0px rgba(0,0,0,0.1)',
-          borderRadius: '0',
-          fontFamily: "'VT323', monospace",
-          fontSize: '1rem'
-        }}
-      >
-        <span className="text-purple-600">Subscribe</span>
-        <ArrowRight className="w-4 h-4 text-purple-600" />
-      </button>
-
       <div className="flex flex-col text-left">
-        <div className="flex items-center justify-between mb-2">
+        <div className="flex items-start justify-between mb-2">
           <h3 
             className="text-lg font-medium text-black"
             style={{ fontFamily: "'VT323', monospace" }}
           >
             {newsletter.title}
           </h3>
+          
+          {/* Subscribe button in top-right for larger screens, hidden on mobile */}
+          <button 
+            onClick={handleSubscribeButtonClick}
+            className="hidden md:inline-flex items-center gap-1 px-4 py-1.5 bg-purple-50 hover:bg-purple-100 transition-colors"
+            style={{ 
+              imageRendering: 'pixelated', 
+              boxShadow: '2px 2px 0px rgba(0,0,0,0.1)',
+              borderRadius: '0',
+              fontFamily: "'VT323', monospace",
+              fontSize: '1rem'
+            }}
+          >
+            <span className="text-purple-600">Subscribe</span>
+            <ArrowRight className="w-4 h-4 text-purple-600" />
+          </button>
         </div>
         
         <div 
@@ -99,11 +99,27 @@ const NewsletterCard = ({
         </div>
         
         <p 
-          className="newsletter-description text-sm text-gray-600"
+          className="newsletter-description text-sm text-gray-600 mb-3"
           style={{ fontFamily: "'VT323', monospace" }}
         >
           {newsletter.description}
         </p>
+        
+        {/* Subscribe button at the bottom for mobile screens */}
+        <button 
+          onClick={handleSubscribeButtonClick}
+          className="md:hidden self-start mt-2 inline-flex items-center gap-1 px-4 py-1.5 bg-purple-50 hover:bg-purple-100 transition-colors"
+          style={{ 
+            imageRendering: 'pixelated', 
+            boxShadow: '2px 2px 0px rgba(0,0,0,0.1)',
+            borderRadius: '0',
+            fontFamily: "'VT323', monospace",
+            fontSize: '1rem'
+          }}
+        >
+          <span className="text-purple-600">Subscribe</span>
+          <ArrowRight className="w-4 h-4 text-purple-600" />
+        </button>
       </div>
     </div>
   );
