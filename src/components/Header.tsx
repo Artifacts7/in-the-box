@@ -1,4 +1,3 @@
-
 import { Menu } from "lucide-react";
 interface HeaderProps {
   onMenuClick?: () => void;
@@ -31,16 +30,7 @@ const Header = ({
             </div>
           </div>
           
-          <button 
-            onClick={onMenuClick}
-            className="md:hidden p-2 border border-purple-200 rounded-none self-end"
-            style={{
-              background: "linear-gradient(to bottom, #f7f5ff 0%, #e5deff 100%)",
-              boxShadow: "2px 2px 0px rgba(0,0,0,0.2)"
-            }}
-          >
-            <Menu size={24} className="text-purple-600" />
-          </button>
+          
         </div>
       </div>
     </header>;
