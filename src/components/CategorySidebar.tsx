@@ -1,4 +1,3 @@
-
 import { Mail, ChevronRight, Cpu, Vote, Newspaper, BookOpen, Music, Utensils, Users } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -15,20 +14,17 @@ const CategorySidebar = ({
   onCategorySelect,
   unreadCounts
 }: CategorySidebarProps) => {
-  // For animations
   const [animating, setAnimating] = useState<string | null>(null);
   
-  // Animation effect
   useEffect(() => {
     if (animating) {
       const timer = setTimeout(() => {
         setAnimating(null);
-      }, 300); // Shorter animation duration
+      }, 300);
       return () => clearTimeout(timer);
     }
   }, [animating]);
   
-  // Category-specific icon mapping
   const getCategoryIcon = (category: string | null, isSelected: boolean) => {
     const isAnimating = category === animating;
     
@@ -73,26 +69,26 @@ const CategorySidebar = ({
   
   return (
     <div 
-      className="w-full md:w-72 bg-white h-auto md:h-full overflow-y-auto py-6 md:py-8 border-b md:border-b-0 md:border-r border-gray-200 transition-all duration-300 ease-in-out animate-fade-in" 
+      className="w-full md:w-72 bg-white h-auto md:h-full overflow-y-auto py-4 md:py-6 border-b md:border-b-0 md:border-r border-gray-200 transition-all duration-300 ease-in-out animate-fade-in" 
       style={{ fontFamily: "'VT323', monospace" }}
     >
-      <div className="space-y-2 px-4">
+      <div className="space-y-1 px-4">
         {allCategories.map(category => (
           <button 
             key={category.id?.toString() || "all"} 
             onClick={() => handleCategoryClick(category.id)} 
-            className={`sidebar-category w-full flex items-center justify-between p-3 transition-all duration-200 ${
+            className={`sidebar-category w-full flex items-center justify-between p-2.5 transition-all duration-200 ${
               selectedCategory === category.id ? "sidebar-category-selected" : "sidebar-category-normal"
             }`} 
             style={{ fontFamily: "'VT323', monospace" }}
           >
-            <div className="flex items-center gap-4">
-              <span className="flex items-center justify-center w-7 h-7">
+            <div className="flex items-center gap-3">
+              <span className="flex items-center justify-center w-6 h-6">
                 {category.icon}
               </span>
               <span className="text-sm uppercase tracking-wider">{category.name}</span>
             </div>
-            <div className="flex items-center justify-end w-12">
+            <div className="flex items-center justify-end w-12 flex-shrink-0">
               {unreadCounts[category.id || 'total'] > 0 && (
                 <span 
                   className="bg-purple-100 text-purple-700 py-0.5 px-2.5 text-xs min-w-[1.5rem] text-center rounded-sm"

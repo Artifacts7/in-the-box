@@ -34,7 +34,7 @@ const Index = () => {
       
       <main className="flex-1 flex flex-col md:flex-row relative">
         {/* Mobile category dropdown button */}
-        <div className="md:hidden py-3 px-4 bg-slate-50 relative">
+        <div className="md:hidden py-2 px-4 bg-slate-50 relative">
           <button 
             onClick={toggleMobileCategories} 
             className="flex items-center justify-between w-full bg-white py-2 px-4 border border-purple-200 shadow-sm"
@@ -86,7 +86,7 @@ const Index = () => {
         </div>
         
         {/* Main Section - Newsletter List */}
-        <div className="w-full bg-white p-4 overflow-y-auto">
+        <div className="w-full bg-white pt-2 px-4 overflow-y-auto">
           <div className="max-w-4xl mx-auto">
             <NewsletterList 
               newsletters={newsletters} 
