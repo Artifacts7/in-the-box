@@ -16,13 +16,14 @@ const Footer = () => {
             You want to add your newsletter? Reach out to{" "}
             <a 
               href="mailto:lorenzo@artifactstech.com" 
-              className="text-purple-700 hover:text-purple-800 underline underline-offset-2 transition-colors"
+              className="text-purple-700 hover:text-purple-900 transition-colors relative group"
               style={{ fontFamily: "'VT323', monospace" }}
             >
               <span className="inline-flex items-center gap-1">
                 lorenzo@artifactstech.com
-                <Mail size={14} />
+                <Mail size={14} className="group-hover:scale-110 transition-transform" />
               </span>
+              <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-purple-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
             </a>
           </p>
         </div>

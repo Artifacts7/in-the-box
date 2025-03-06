@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Newsletter } from "../types/Newsletter";
 import NewsletterCard from "./NewsletterCard";
@@ -77,11 +78,11 @@ const NewsletterList = ({
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      <div className="mb-8 text-center">
-        <div className="flex items-center justify-center gap-3 mb-6">
+      <div className="mb-8">
+        <div className="flex items-center mb-6 px-1">
           <button 
             onClick={handleIconClick} 
-            className="cursor-pointer"
+            className="cursor-pointer mr-3"
             style={{ 
               background: "linear-gradient(to bottom, #f0f0f0, #e1e1e1)",
               border: "1px solid #c0c0c0",
@@ -93,7 +94,7 @@ const NewsletterList = ({
             {getCategoryIcon()}
           </button>
           <h2 
-            className="text-2xl font-bold uppercase tracking-widest"
+            className="text-2xl font-bold uppercase tracking-widest text-left"
             style={{ 
               fontFamily: "'VT323', monospace", 
               color: '#7E69AB',
