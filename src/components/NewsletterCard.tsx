@@ -53,19 +53,20 @@ const NewsletterCard = ({
         fontFamily: "'VT323', monospace"
       }}
     >
-      {/* Subscribe button in top-right corner */}
+      {/* Subscribe button in top-right corner, aligned with title */}
       <button 
         onClick={handleSubscribeButtonClick}
-        className="subscribe-button absolute top-3 right-3 inline-flex items-center gap-1 px-3 py-1 bg-purple-50 hover:bg-purple-100 transition-colors"
+        className="subscribe-button absolute top-6 right-6 inline-flex items-center gap-1 px-4 py-1.5 bg-purple-50 hover:bg-purple-100 transition-colors"
         style={{ 
           imageRendering: 'pixelated', 
           boxShadow: '1px 1px 0px rgba(0,0,0,0.1)',
           borderRadius: '0',
-          fontFamily: "'VT323', monospace"
+          fontFamily: "'VT323', monospace",
+          fontSize: '1rem'
         }}
       >
-        <span className="text-xs text-purple-600">Subscribe</span>
-        <ArrowRight className="w-3 h-3 text-purple-600" />
+        <span className="text-purple-600">Subscribe</span>
+        <ArrowRight className="w-4 h-4 text-purple-600" />
       </button>
 
       <div className="flex flex-col text-left">

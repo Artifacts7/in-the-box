@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Newsletter } from "../types/Newsletter";
 import NewsletterCard from "./NewsletterCard";
 import { Input } from "../components/ui/input";
-import { Search, FileSearch } from "lucide-react";
+import { Search, FileSearch, Cpu, Vote, Newspaper, BookOpen, Music, Utensils, Users, Mail } from "lucide-react";
 
 interface NewsletterListProps {
   newsletters: Newsletter[];
@@ -21,6 +21,39 @@ const NewsletterList = ({
   onCategorySelect
 }: NewsletterListProps) => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [animatingIcon, setAnimatingIcon] = useState(false);
+  
+  // Get the appropriate icon for the selected category
+  const getCategoryIcon = () => {
+    if (selectedCategory === null) {
+      return <Mail size={30} className={`text-purple-600 ${animatingIcon ? 'animate-bounce' : ''}`} />;
+    }
+    
+    switch(selectedCategory.toLowerCase()) {
+      case "technology":
+        return <Cpu size={30} className={`text-purple-600 ${animatingIcon ? 'animate-pulse' : ''}`} />;
+      case "politics":
+        return <Vote size={30} className={`text-purple-600 ${animatingIcon ? 'animate-spin' : ''}`} />;
+      case "news":
+        return <Newspaper size={30} className={`text-purple-600 ${animatingIcon ? 'animate-bounce' : ''}`} />;
+      case "education":
+        return <BookOpen size={30} className={`text-purple-600 ${animatingIcon ? 'animate-pulse' : ''}`} />;
+      case "entertainment":
+        return <Music size={30} className={`text-purple-600 ${animatingIcon ? 'animate-bounce' : ''}`} />;
+      case "food":
+        return <Utensils size={30} className={`text-purple-600 ${animatingIcon ? 'animate-spin' : ''}`} />;
+      case "social":
+        return <Users size={30} className={`text-purple-600 ${animatingIcon ? 'animate-pulse' : ''}`} />;
+      default:
+        return <Mail size={30} className={`text-purple-600 ${animatingIcon ? 'animate-bounce' : ''}`} />;
+    }
+  };
+  
+  // Handle category icon click to toggle animation
+  const handleIconClick = () => {
+    setAnimatingIcon(true);
+    setTimeout(() => setAnimatingIcon(false), 1000);
+  };
   
   // First filter the newsletters
   const filteredNewsletters = newsletters.filter(newsletter => {
@@ -46,15 +79,20 @@ const NewsletterList = ({
   return (
     <div className="w-full max-w-4xl mx-auto">
       <div className="mb-8 text-center">
-        <h2 
-          className="text-2xl font-bold uppercase tracking-widest mb-6"
-          style={{ 
-            fontFamily: "'VT323', monospace", 
-            color: '#7E69AB' 
-          }}
-        >
-          {selectedCategory === null ? "All Newsletters" : selectedCategory}
-        </h2>
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <button onClick={handleIconClick} className="cursor-pointer">
+            {getCategoryIcon()}
+          </button>
+          <h2 
+            className="text-2xl font-bold uppercase tracking-widest"
+            style={{ 
+              fontFamily: "'VT323', monospace", 
+              color: '#7E69AB' 
+            }}
+          >
+            {selectedCategory === null ? "All Newsletters" : selectedCategory}
+          </h2>
+        </div>
         
         <div className="relative max-w-[400px] mx-auto">
           <div className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-600">

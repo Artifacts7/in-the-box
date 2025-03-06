@@ -31,29 +31,28 @@ const CategorySidebar = ({
   // Category-specific icon mapping
   const getCategoryIcon = (category: string | null, isSelected: boolean) => {
     const isAnimating = category === animating;
-    const animationClass = isAnimating ? "animate-pulse" : "";
     
     if (category === null) {
-      return <Mail size={18} className="text-purple-600" />;
+      return <Mail size={20} className={`text-purple-600 ${isAnimating ? 'animate-bounce' : ''}`} />;
     }
     
     switch(category.toLowerCase()) {
       case "technology":
-        return <Cpu size={18} className={`text-purple-500 ${animationClass}`} />;
+        return <Cpu size={20} className={`text-purple-500 ${isAnimating ? 'animate-pulse' : ''}`} />;
       case "politics":
-        return <Vote size={18} className={`text-purple-500 ${animationClass}`} />;
+        return <Vote size={20} className={`text-purple-500 ${isAnimating ? 'animate-spin' : ''}`} />;
       case "news":
-        return <Newspaper size={18} className={`text-purple-500 ${animationClass}`} />;
+        return <Newspaper size={20} className={`text-purple-500 ${isAnimating ? 'animate-bounce' : ''}`} />;
       case "education":
-        return <BookOpen size={18} className={`text-purple-500 ${animationClass}`} />;
+        return <BookOpen size={20} className={`text-purple-500 ${isAnimating ? 'animate-pulse' : ''}`} />;
       case "entertainment":
-        return <Music size={18} className={`text-purple-500 ${animationClass}`} />;
+        return <Music size={20} className={`text-purple-500 ${isAnimating ? 'animate-bounce' : ''}`} />;
       case "food":
-        return <Utensils size={18} className={`text-purple-500 ${animationClass}`} />;
+        return <Utensils size={20} className={`text-purple-500 ${isAnimating ? 'animate-spin' : ''}`} />;
       case "social":
-        return <Users size={18} className={`text-purple-500 ${animationClass}`} />;
+        return <Users size={20} className={`text-purple-500 ${isAnimating ? 'animate-pulse' : ''}`} />;
       default:
-        return <Mail size={18} className={`text-purple-500 ${animationClass}`} />;
+        return <Mail size={20} className={`text-purple-500 ${isAnimating ? 'animate-bounce' : ''}`} />;
     }
   };
   
@@ -88,7 +87,7 @@ const CategorySidebar = ({
             style={{ fontFamily: "'VT323', monospace" }}
           >
             <div className="flex items-center gap-4">
-              <span className="flex items-center justify-center w-6 h-6">
+              <span className="flex items-center justify-center w-7 h-7">
                 {category.icon}
               </span>
               <span className="text-sm uppercase tracking-wider">{category.name}</span>
