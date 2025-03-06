@@ -23,7 +23,7 @@ const CategorySidebar = ({
     if (animating) {
       const timer = setTimeout(() => {
         setAnimating(null);
-      }, 1000);
+      }, 300); // Shorter animation duration
       return () => clearTimeout(timer);
     }
   }, [animating]);
@@ -33,26 +33,26 @@ const CategorySidebar = ({
     const isAnimating = category === animating;
     
     if (category === null) {
-      return <Mail size={20} className={`text-purple-600 ${isAnimating ? 'animate-bounce' : ''}`} />;
+      return <Mail size={20} className={`text-purple-600 ${isAnimating ? 'translate-x-1' : ''} transition-transform`} />;
     }
     
     switch(category.toLowerCase()) {
       case "technology":
-        return <Cpu size={20} className={`text-purple-500 ${isAnimating ? 'animate-pulse' : ''}`} />;
+        return <Cpu size={20} className={`text-purple-500 ${isAnimating ? 'translate-y-1' : ''} transition-transform`} />;
       case "politics":
-        return <Vote size={20} className={`text-purple-500 ${isAnimating ? 'animate-spin' : ''}`} />;
+        return <Vote size={20} className={`text-purple-500 ${isAnimating ? 'rotate-12' : ''} transition-transform`} />;
       case "news":
-        return <Newspaper size={20} className={`text-purple-500 ${isAnimating ? 'animate-bounce' : ''}`} />;
+        return <Newspaper size={20} className={`text-purple-500 ${isAnimating ? 'scale-110' : ''} transition-transform`} />;
       case "education":
-        return <BookOpen size={20} className={`text-purple-500 ${isAnimating ? 'animate-pulse' : ''}`} />;
+        return <BookOpen size={20} className={`text-purple-500 ${isAnimating ? 'translate-y-1' : ''} transition-transform`} />;
       case "entertainment":
-        return <Music size={20} className={`text-purple-500 ${isAnimating ? 'animate-bounce' : ''}`} />;
+        return <Music size={20} className={`text-purple-500 ${isAnimating ? 'scale-110' : ''} transition-transform`} />;
       case "food":
-        return <Utensils size={20} className={`text-purple-500 ${isAnimating ? 'animate-spin' : ''}`} />;
+        return <Utensils size={20} className={`text-purple-500 ${isAnimating ? 'rotate-12' : ''} transition-transform`} />;
       case "social":
-        return <Users size={20} className={`text-purple-500 ${isAnimating ? 'animate-pulse' : ''}`} />;
+        return <Users size={20} className={`text-purple-500 ${isAnimating ? 'translate-x-1' : ''} transition-transform`} />;
       default:
-        return <Mail size={20} className={`text-purple-500 ${isAnimating ? 'animate-bounce' : ''}`} />;
+        return <Mail size={20} className={`text-purple-500 ${isAnimating ? 'translate-y-1' : ''} transition-transform`} />;
     }
   };
   

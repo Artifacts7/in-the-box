@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Newsletter } from "../types/Newsletter";
 import NewsletterCard from "./NewsletterCard";
@@ -26,33 +25,33 @@ const NewsletterList = ({
   // Get the appropriate icon for the selected category
   const getCategoryIcon = () => {
     if (selectedCategory === null) {
-      return <Mail size={30} className={`text-purple-600 ${animatingIcon ? 'animate-bounce' : ''}`} />;
+      return <Mail size={30} className={`text-purple-600 ${animatingIcon ? 'translate-x-1' : ''} transition-transform duration-300`} />;
     }
     
     switch(selectedCategory.toLowerCase()) {
       case "technology":
-        return <Cpu size={30} className={`text-purple-600 ${animatingIcon ? 'animate-pulse' : ''}`} />;
+        return <Cpu size={30} className={`text-purple-600 ${animatingIcon ? 'translate-y-1' : ''} transition-transform duration-300`} />;
       case "politics":
-        return <Vote size={30} className={`text-purple-600 ${animatingIcon ? 'animate-spin' : ''}`} />;
+        return <Vote size={30} className={`text-purple-600 ${animatingIcon ? 'rotate-12' : ''} transition-transform duration-300`} />;
       case "news":
-        return <Newspaper size={30} className={`text-purple-600 ${animatingIcon ? 'animate-bounce' : ''}`} />;
+        return <Newspaper size={30} className={`text-purple-600 ${animatingIcon ? 'scale-110' : ''} transition-transform duration-300`} />;
       case "education":
-        return <BookOpen size={30} className={`text-purple-600 ${animatingIcon ? 'animate-pulse' : ''}`} />;
+        return <BookOpen size={30} className={`text-purple-600 ${animatingIcon ? 'translate-y-1' : ''} transition-transform duration-300`} />;
       case "entertainment":
-        return <Music size={30} className={`text-purple-600 ${animatingIcon ? 'animate-bounce' : ''}`} />;
+        return <Music size={30} className={`text-purple-600 ${animatingIcon ? 'scale-110' : ''} transition-transform duration-300`} />;
       case "food":
-        return <Utensils size={30} className={`text-purple-600 ${animatingIcon ? 'animate-spin' : ''}`} />;
+        return <Utensils size={30} className={`text-purple-600 ${animatingIcon ? 'rotate-12' : ''} transition-transform duration-300`} />;
       case "social":
-        return <Users size={30} className={`text-purple-600 ${animatingIcon ? 'animate-pulse' : ''}`} />;
+        return <Users size={30} className={`text-purple-600 ${animatingIcon ? 'translate-x-1' : ''} transition-transform duration-300`} />;
       default:
-        return <Mail size={30} className={`text-purple-600 ${animatingIcon ? 'animate-bounce' : ''}`} />;
+        return <Mail size={30} className={`text-purple-600 ${animatingIcon ? 'scale-105' : ''} transition-transform duration-300`} />;
     }
   };
   
   // Handle category icon click to toggle animation
   const handleIconClick = () => {
     setAnimatingIcon(true);
-    setTimeout(() => setAnimatingIcon(false), 1000);
+    setTimeout(() => setAnimatingIcon(false), 300);
   };
   
   // First filter the newsletters
@@ -80,14 +79,25 @@ const NewsletterList = ({
     <div className="w-full max-w-4xl mx-auto">
       <div className="mb-8 text-center">
         <div className="flex items-center justify-center gap-3 mb-6">
-          <button onClick={handleIconClick} className="cursor-pointer">
+          <button 
+            onClick={handleIconClick} 
+            className="cursor-pointer"
+            style={{ 
+              background: "linear-gradient(to bottom, #f0f0f0, #e1e1e1)",
+              border: "1px solid #c0c0c0",
+              borderRadius: "4px",
+              padding: "4px",
+              boxShadow: "1px 1px 2px rgba(0,0,0,0.1)"
+            }}
+          >
             {getCategoryIcon()}
           </button>
           <h2 
             className="text-2xl font-bold uppercase tracking-widest"
             style={{ 
               fontFamily: "'VT323', monospace", 
-              color: '#7E69AB' 
+              color: '#7E69AB',
+              textShadow: "1px 1px 0 rgba(0,0,0,0.1)"
             }}
           >
             {selectedCategory === null ? "All Newsletters" : selectedCategory}
