@@ -32,7 +32,7 @@ const Index = () => {
   return <div className="min-h-screen flex flex-col bg-white text-black">
       <Header onMenuClick={toggleMobileCategories} />
       
-      <main className="flex-1 grid md:grid-cols-[272px_1fr] relative">
+      <main className="flex-1 grid md:grid-cols-[272px_1fr] relative max-w-6xl mx-auto px-4 md:px-8">
         {/* Mobile category dropdown button */}
         <div className="md:hidden py-2 px-4 bg-slate-50 relative">
           <button 

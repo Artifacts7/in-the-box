@@ -9,12 +9,12 @@ const Header = ({
   onMenuClick
 }: HeaderProps) => {
   return (
-    <header className="py-3 bg-white border-b border-gray-200">
-      <div className="max-w-5xl mx-auto px-4 md:px-6">
+    <header className="py-4 bg-white border-b border-gray-200">
+      <div className="max-w-6xl mx-auto px-4 md:px-8">
         <div className="grid md:grid-cols-[272px_1fr] items-center w-full">
           {/* Logo section - aligned with category sidebar */}
           <div className="flex items-center">
-            <div className="w-[60px] p-1.5 border-2 border-purple-200 rounded-none shadow-[3px_3px_0px_rgba(0,0,0,0.2)]" style={{
+            <div className="w-[68px] p-2 border-2 border-purple-200 rounded-none shadow-[3px_3px_0px_rgba(0,0,0,0.2)]" style={{
               background: "linear-gradient(to bottom, #f7f5ff 0%, #e5deff 100%)"
             }}>
               <img src="/lovable-uploads/76c43e19-dd4e-42a8-9315-f676898aa4af.png" alt="In The Box Logo" className="w-full h-auto object-contain" />
@@ -28,10 +28,10 @@ const Header = ({
                 fontFamily: "'VT323', monospace",
                 color: '#7E69AB',
                 textShadow: "2px 2px 0px rgba(0,0,0,0.1)"
-              }} className="text-xl md:text-2xl uppercase tracking-widest text-black font-bold">IN THE BOX</h1>
+              }} className="text-2xl md:text-3xl uppercase tracking-widest text-black font-bold">IN THE BOX</h1>
               <p style={{
                 fontFamily: "'VT323', monospace"
-              }} className="text-xs text-gray-600 tracking-wide">
+              }} className="text-sm text-gray-600 tracking-wide">
                 Handpicked Newsletters Worth Your Inbox
               </p>
             </div>
