@@ -1,17 +1,16 @@
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { newsletters, getCategories, getUnreadCounts } from "../data/newsletters";
 import Header from "../components/Header";
 import NewsletterList from "../components/NewsletterList";
 import CategorySidebar from "../components/CategorySidebar";
 import Footer from "../components/Footer";
-import { ChevronDown, X } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const Index = () => {
   const [selectedNewsletterID, setSelectedNewsletterID] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const categories = getCategories();
   const unreadCounts = getUnreadCounts();
 
@@ -25,24 +24,6 @@ const Index = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  // Handle clicks outside the dropdown to close it
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (sidebarOpen && dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setSidebarOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [sidebarOpen]);
-
-  // Add overlay click handler to close dropdown
-  const handleOverlayClick = () => {
-    if (sidebarOpen) {
-      setSidebarOpen(false);
-    }
-  };
   
   const toggleMobileCategories = () => {
     setSidebarOpen(!sidebarOpen);
@@ -66,50 +47,31 @@ const Index = () => {
             <span className="font-medium uppercase tracking-wider text-purple-700">
               {selectedCategory === null ? "All Categories" : selectedCategory}
             </span>
-            <ChevronDown size={20} className="text-purple-600" />
+            {sidebarOpen ? (
+              <ChevronUp size={20} className="text-purple-600" />
+            ) : (
+              <ChevronDown size={20} className="text-purple-600" />
+            )}
           </button>
           
           {/* Dropdown menu for mobile - positioned directly below the button */}
           {sidebarOpen && (
-            <>
-              {/* Mobile overlay */}
-              <div 
-                className="fixed inset-0 bg-black bg-opacity-50 z-10 md:hidden animate-fade-in" 
-                onClick={handleOverlayClick}
-              />
-              
-              <div 
-                ref={dropdownRef} 
-                className="absolute top-full left-0 right-0 z-20 bg-white border border-purple-100 shadow-lg md:hidden animate-fade-in"
-                style={{ boxShadow: "4px 4px 0px rgba(0,0,0,0.2)" }}
-              >
-                <div className="flex justify-between items-center p-3 bg-purple-100 border-b border-purple-200">
-                  <h3 
-                    className="text-purple-700 font-medium uppercase" 
-                    style={{ fontFamily: "'VT323', monospace" }}
-                  >
-                    Categories
-                  </h3>
-                  <button 
-                    onClick={() => setSidebarOpen(false)} 
-                    className="p-1 rounded-full bg-white text-purple-700 hover:bg-purple-50"
-                  >
-                    <X size={20} />
-                  </button>
-                </div>
-                <div className="max-h-[60vh] overflow-y-auto">
-                  <CategorySidebar 
-                    categories={categories} 
-                    selectedCategory={selectedCategory} 
-                    onCategorySelect={category => {
-                      setSelectedCategory(category);
-                      setSidebarOpen(false);
-                    }} 
-                    unreadCounts={unreadCounts} 
-                  />
-                </div>
+            <div 
+              className="absolute top-full left-0 right-0 z-20 bg-white border border-purple-100 shadow-lg md:hidden"
+              style={{ boxShadow: "4px 4px 0px rgba(0,0,0,0.2)" }}
+            >
+              <div className="max-h-[60vh] overflow-y-auto">
+                <CategorySidebar 
+                  categories={categories} 
+                  selectedCategory={selectedCategory} 
+                  onCategorySelect={category => {
+                    setSelectedCategory(category);
+                    setSidebarOpen(false);
+                  }} 
+                  unreadCounts={unreadCounts} 
+                />
               </div>
-            </>
+            </div>
           )}
         </div>
         
