@@ -32,7 +32,7 @@ const Index = () => {
   return <div className="min-h-screen flex flex-col bg-white text-black">
       <Header onMenuClick={toggleMobileCategories} />
       
-      <main className="flex-1 flex flex-col md:flex-row relative">
+      <main className="flex-1 grid md:grid-cols-[272px_1fr] relative">
         {/* Mobile category dropdown button */}
         <div className="md:hidden py-2 px-4 bg-slate-50 relative">
           <button 
@@ -76,7 +76,7 @@ const Index = () => {
         </div>
         
         {/* Desktop Sidebar - Categories */}
-        <div className="hidden md:block">
+        <div className="hidden md:block border-r border-gray-200">
           <CategorySidebar 
             categories={categories} 
             selectedCategory={selectedCategory} 
