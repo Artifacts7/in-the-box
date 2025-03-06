@@ -1,4 +1,5 @@
-import { Folder, FolderOpen, Mail, ChevronRight } from "lucide-react";
+
+import { Mail, ChevronRight, Cpu, Vote, Newspaper, BookOpen, Music, Utensils, Users } from "lucide-react";
 import { useState, useEffect } from "react";
 
 interface CategorySidebarProps {
@@ -14,16 +15,61 @@ const CategorySidebar = ({
   onCategorySelect,
   unreadCounts
 }: CategorySidebarProps) => {
+  // For animations
+  const [animating, setAnimating] = useState<string | null>(null);
+  
+  // Animation effect
+  useEffect(() => {
+    if (animating) {
+      const timer = setTimeout(() => {
+        setAnimating(null);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [animating]);
+  
+  // Category-specific icon mapping
+  const getCategoryIcon = (category: string | null, isSelected: boolean) => {
+    const isAnimating = category === animating;
+    const animationClass = isAnimating ? "animate-pulse" : "";
+    
+    if (category === null) {
+      return <Mail size={18} className="text-purple-600" />;
+    }
+    
+    switch(category.toLowerCase()) {
+      case "technology":
+        return <Cpu size={18} className={`text-purple-500 ${animationClass}`} />;
+      case "politics":
+        return <Vote size={18} className={`text-purple-500 ${animationClass}`} />;
+      case "news":
+        return <Newspaper size={18} className={`text-purple-500 ${animationClass}`} />;
+      case "education":
+        return <BookOpen size={18} className={`text-purple-500 ${animationClass}`} />;
+      case "entertainment":
+        return <Music size={18} className={`text-purple-500 ${animationClass}`} />;
+      case "food":
+        return <Utensils size={18} className={`text-purple-500 ${animationClass}`} />;
+      case "social":
+        return <Users size={18} className={`text-purple-500 ${animationClass}`} />;
+      default:
+        return <Mail size={18} className={`text-purple-500 ${animationClass}`} />;
+    }
+  };
+  
+  const handleCategoryClick = (categoryId: string | null) => {
+    onCategorySelect(categoryId);
+    setAnimating(categoryId);
+  };
+
   const allCategories = [{
     id: null,
     name: "All",
-    icon: <Mail size={18} className="text-purple-600" />
+    icon: getCategoryIcon(null, selectedCategory === null)
   }, ...categories.map(category => ({
     id: category,
     name: category,
-    icon: selectedCategory === category ? 
-      <FolderOpen size={18} className="text-purple-500" /> : 
-      <Folder size={18} className="text-purple-400" />
+    icon: getCategoryIcon(category, selectedCategory === category)
   }))];
   
   return (
@@ -35,7 +81,7 @@ const CategorySidebar = ({
         {allCategories.map(category => (
           <button 
             key={category.id?.toString() || "all"} 
-            onClick={() => onCategorySelect(category.id)} 
+            onClick={() => handleCategoryClick(category.id)} 
             className={`sidebar-category w-full flex items-center justify-between p-3 transition-all duration-200 ${
               selectedCategory === category.id ? "sidebar-category-selected" : "sidebar-category-normal"
             }`} 

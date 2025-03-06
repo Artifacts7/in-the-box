@@ -45,9 +45,9 @@ const NewsletterList = ({
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      <div className="mb-8 text-left">
+      <div className="mb-8 text-center">
         <h2 
-          className="text-2xl font-light uppercase tracking-widest mb-6"
+          className="text-2xl font-bold uppercase tracking-widest mb-6"
           style={{ 
             fontFamily: "'VT323', monospace", 
             color: '#7E69AB' 
@@ -56,7 +56,7 @@ const NewsletterList = ({
           {selectedCategory === null ? "All Newsletters" : selectedCategory}
         </h2>
         
-        <div className="relative">
+        <div className="relative max-w-[400px] mx-auto">
           <div className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-600">
             <Search size={18} />
           </div>
@@ -65,7 +65,7 @@ const NewsletterList = ({
             placeholder="Search newsletters..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-11 bg-gray-50 border-gray-200 text-black placeholder-gray-500 focus-visible:ring-purple-300 focus-visible:border-purple-300 w-full md:w-[400px]"
+            className="pl-11 bg-gray-50 border-gray-200 text-black placeholder-gray-500 focus-visible:ring-purple-300 focus-visible:border-purple-300 w-full"
             style={{ 
               borderRadius: '0', 
               fontFamily: "'VT323', monospace",
