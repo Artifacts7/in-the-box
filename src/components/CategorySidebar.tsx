@@ -95,7 +95,7 @@ const CategorySidebar = ({
             <div className="flex items-center">
               {unreadCounts[category.id || 'total'] > 0 && (
                 <span 
-                  className="bg-purple-100 text-purple-700 py-0.5 px-2.5 text-xs"
+                  className="bg-purple-100 text-purple-700 py-0.5 px-2.5 text-xs min-w-[1.5rem] text-center"
                   style={{ fontFamily: "'VT323', monospace" }}
                 >
                   {unreadCounts[category.id || 'total']}
