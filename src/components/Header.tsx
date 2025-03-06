@@ -15,16 +15,14 @@ const Header = ({
               <img src="/lovable-uploads/76c43e19-dd4e-42a8-9315-f676898aa4af.png" alt="In The Box Logo" className="w-36 md:w-40 h-auto object-contain" />
             </div>
             <div className="text-left">
-              <h1 className="text-3xl md:text-4xl font-medium uppercase tracking-widest text-black mb-1" style={{
+              <h1 style={{
               fontFamily: "'VT323', monospace",
               color: '#7E69AB',
               textShadow: "2px 2px 0px rgba(0,0,0,0.1)"
-            }}>
-                In The Box
-              </h1>
-              <p className="text-sm md:text-base text-gray-600 tracking-wide" style={{
+            }} className="text-3xl md:text-4xl uppercase tracking-widest text-black mb-1 font-bold px-[50px]">IN THE BOX</h1>
+              <p style={{
               fontFamily: "'VT323', monospace"
-            }}>
+            }} className="text-sm md:text-base text-gray-600 tracking-wide px-[50px]">
                 Handpicked Newsletters Worth Your Inbox
               </p>
             </div>
