@@ -57,7 +57,7 @@ const CategorySidebar = ({
 
   const allCategories = [{
     id: null,
-    name: "All",
+    name: "The full box",
     icon: getCategoryIcon(null, selectedCategory === null)
   }, ...categories.map(category => ({
     id: category,
