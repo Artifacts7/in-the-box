@@ -33,9 +33,7 @@ const Header = ({
           
           {/* Mobile menu button aligned better */}
           <div className="md:hidden absolute top-6 right-4">
-            {onMenuClick && <button onClick={onMenuClick} className="p-2 bg-purple-50 text-purple-600 hover:bg-purple-100 rounded-sm transition-colors">
-              
-            </button>}
+            {onMenuClick}
           </div>
         </div>
       </div>
