@@ -10,10 +10,10 @@ const Header = ({
 }: HeaderProps) => {
   return <header className="py-10 bg-white border-b border-gray-200">
       <div className="max-w-6xl mx-auto px-4 md:px-8">
-        <div className="grid md:grid-cols-[300px_1fr] items-center w-full gap-8">
+        <div className="grid md:grid-cols-[300px_1fr] items-center w-full gap-2">
           {/* Logo section - aligned with category sidebar */}
           <div className="flex items-center justify-center md:justify-start">
-            <div className="w-[120px] p-4 border-2 border-purple-300 rounded-sm shadow-[6px_6px_0px_rgba(0,0,0,0.15)]" style={{
+            <div className="w-[140px] p-4 border-2 border-purple-300 rounded-sm shadow-[6px_6px_0px_rgba(0,0,0,0.15)]" style={{
               background: "linear-gradient(to bottom, #f7f5ff 0%, #e5deff 100%)"
             }}>
               <img 
@@ -26,12 +26,11 @@ const Header = ({
           
           {/* Title section - aligned with newsletter list */}
           <div className="flex items-center justify-between">
-            <div className="text-center md:text-left">
+            <div className="text-center md:text-left -ml-4">
               <h1 
                 style={{
                   fontFamily: "'VT323', monospace",
-                  color: '#7E69AB',
-                  textShadow: "4px 4px 0px rgba(0,0,0,0.15)"
+                  color: '#7E69AB'
                 }} 
                 className="text-4xl md:text-6xl uppercase tracking-widest text-black font-bold"
               >
@@ -41,7 +40,7 @@ const Header = ({
                 style={{
                   fontFamily: "'VT323', monospace"
                 }} 
-                className="text-base md:text-xl text-gray-600 tracking-wide mt-2"
+                className="text-base md:text-xl text-gray-600 tracking-wide mt-1"
               >
                 Handpicked Newsletters Worth Your Inbox
               </p>
