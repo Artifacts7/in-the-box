@@ -28,6 +28,14 @@ const Index = () => {
   const toggleMobileCategories = () => {
     setSidebarOpen(!sidebarOpen);
   };
+
+  // Get the display title with consistent wording
+  const getDisplayTitle = () => {
+    if (selectedCategory === null) {
+      return "The full box";
+    }
+    return selectedCategory;
+  };
   
   return <div className="min-h-screen flex flex-col bg-white text-black">
       <Header onMenuClick={toggleMobileCategories} />
@@ -45,7 +53,7 @@ const Index = () => {
             }}
           >
             <span className="font-medium uppercase tracking-wider text-purple-700">
-              {selectedCategory === null ? "All Categories" : selectedCategory}
+              {getDisplayTitle()}
             </span>
             {sidebarOpen ? (
               <ChevronUp size={20} className="text-purple-600" />

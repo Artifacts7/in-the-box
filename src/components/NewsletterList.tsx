@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Newsletter } from "../types/Newsletter";
 import NewsletterCard from "./NewsletterCard";
@@ -60,6 +61,14 @@ const NewsletterList = ({
 
   const sortedNewsletters = [...filteredNewsletters].sort((a, b) => a.title.localeCompare(b.title));
 
+  // Display title based on selectedCategory, matching the exact wording in the categories list
+  const getDisplayTitle = () => {
+    if (selectedCategory === null) {
+      return "The full box";
+    }
+    return selectedCategory;
+  };
+
   return <div className="w-full max-w-4xl">
       <div className="mb-8">
         <div className="flex items-start mb-5 px-1">
@@ -77,7 +86,7 @@ const NewsletterList = ({
             fontFamily: "'VT323', monospace",
             color: '#7E69AB'
           }} className="text-2xl font-bold uppercase tracking-widest text-left mb-1 px-0 py-[10px]">
-              {selectedCategory === null ? "All Newsletters" : selectedCategory}
+              {getDisplayTitle()}
             </h2>
             
           </div>
