@@ -3,6 +3,7 @@ import { Newsletter } from "../types/Newsletter";
 import NewsletterCard from "./NewsletterCard";
 import { Input } from "../components/ui/input";
 import { Search, FileSearch, Cpu, Vote, Newspaper, BookOpen, Music, Utensils, Users, Mail } from "lucide-react";
+
 interface NewsletterListProps {
   newsletters: Newsletter[];
   selectedNewsletterID: string | null;
@@ -10,6 +11,7 @@ interface NewsletterListProps {
   selectedCategory: string | null;
   onCategorySelect: (category: string) => void;
 }
+
 const NewsletterList = ({
   newsletters,
   selectedNewsletterID,
@@ -20,7 +22,6 @@ const NewsletterList = ({
   const [searchTerm, setSearchTerm] = useState("");
   const [animatingIcon, setAnimatingIcon] = useState(false);
 
-  // Get the appropriate icon for the selected category
   const getCategoryIcon = () => {
     if (selectedCategory === null) {
       return <Mail size={30} className={`text-purple-600 ${animatingIcon ? 'translate-x-1' : ''} transition-transform duration-300`} />;
@@ -45,24 +46,20 @@ const NewsletterList = ({
     }
   };
 
-  // Handle category icon click to toggle animation
   const handleIconClick = () => {
     setAnimatingIcon(true);
     setTimeout(() => setAnimatingIcon(false), 300);
   };
 
-  // First filter the newsletters
   const filteredNewsletters = newsletters.filter(newsletter => {
-    // Search filter
     const matchesSearch = newsletter.title.toLowerCase().includes(searchTerm.toLowerCase()) || newsletter.description.toLowerCase().includes(searchTerm.toLowerCase()) || newsletter.sender && newsletter.sender.toLowerCase().includes(searchTerm.toLowerCase());
 
-    // Category filter
     const matchesCategory = selectedCategory === null || newsletter.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
-  // Then sort the filtered newsletters alphabetically by title
   const sortedNewsletters = [...filteredNewsletters].sort((a, b) => a.title.localeCompare(b.title));
+
   return <div className="w-full max-w-4xl">
       <div className="mb-8">
         <div className="flex items-start mb-5 px-1">
@@ -78,8 +75,7 @@ const NewsletterList = ({
           <div>
             <h2 style={{
             fontFamily: "'VT323', monospace",
-            color: '#7E69AB',
-            textShadow: "2px 2px 0 rgba(0,0,0,0.1)"
+            color: '#7E69AB'
           }} className="text-2xl font-bold uppercase tracking-widest text-left mb-1 px-0 py-[10px]">
               {selectedCategory === null ? "All Newsletters" : selectedCategory}
             </h2>
@@ -121,4 +117,5 @@ const NewsletterList = ({
         </div>}
     </div>;
 };
+
 export default NewsletterList;
