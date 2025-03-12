@@ -43,7 +43,7 @@ const NewsletterCard = ({
 
   return (
     <div 
-      className={`newsletter-card cursor-pointer p-6 relative ${isSelected ? "selected" : ""}`}
+      className={`newsletter-card cursor-pointer p-6 relative transition-all duration-200 hover:bg-purple-50 ${isSelected ? "selected" : ""}`}
       onClick={onClick}
       style={{ 
         imageRendering: 'pixelated', 
