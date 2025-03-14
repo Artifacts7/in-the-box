@@ -41,18 +41,16 @@ const Index = () => {
       <Header onMenuClick={toggleMobileCategories} />
       
       <main className="flex-1 grid md:grid-cols-[272px_1fr] gap-x-8 relative max-w-6xl mx-auto px-4 md:px-8 pt-6 md:pt-8">
-        {/* Mobile category dropdown button */}
-        <div className="md:hidden py-2 px-4 bg-slate-50 relative">
+        {/* Mobile category title that acts as dropdown trigger */}
+        <div className="md:hidden mb-4 relative">
           <button 
             onClick={toggleMobileCategories} 
-            className="flex items-center justify-between w-full bg-white py-2 px-4 border border-purple-200 shadow-sm"
+            className="flex items-center justify-between w-full p-4 border-b-2 border-purple-200"
             style={{
               fontFamily: "'VT323', monospace",
-              background: "linear-gradient(to bottom, #f7f5ff 0%, #e5deff 100%)",
-              boxShadow: "2px 2px 0px rgba(0,0,0,0.1)"
             }}
           >
-            <span className="font-medium uppercase tracking-wider text-purple-700">
+            <span className="text-xl font-bold uppercase tracking-widest text-purple-700">
               {getDisplayTitle()}
             </span>
             {sidebarOpen ? (
@@ -62,7 +60,7 @@ const Index = () => {
             )}
           </button>
           
-          {/* Dropdown menu for mobile - positioned directly below the button */}
+          {/* Dropdown menu for mobile */}
           {sidebarOpen && (
             <div 
               className="absolute top-full left-0 right-0 z-20 bg-white border border-purple-100 shadow-lg md:hidden"
