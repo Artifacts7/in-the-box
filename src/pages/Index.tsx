@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { newsletters, getCategories, getUnreadCounts } from "../data/newsletters";
 import Header from "../components/Header";
@@ -6,7 +5,6 @@ import NewsletterList from "../components/NewsletterList";
 import CategorySidebar from "../components/CategorySidebar";
 import Footer from "../components/Footer";
 import { ChevronDown, ChevronUp } from "lucide-react";
-
 const Index = () => {
   const [selectedNewsletterID, setSelectedNewsletterID] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -24,7 +22,6 @@ const Index = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  
   const toggleMobileCategories = () => {
     setSidebarOpen(!sidebarOpen);
   };
@@ -36,77 +33,39 @@ const Index = () => {
     }
     return selectedCategory;
   };
-  
   return <div className="min-h-screen flex flex-col bg-white text-black">
       <Header onMenuClick={toggleMobileCategories} />
       
       <main className="flex-1 grid md:grid-cols-[272px_1fr] gap-x-8 relative max-w-6xl mx-auto px-4 md:px-8 pt-6 md:pt-8">
         {/* Mobile category title that acts as dropdown trigger */}
         <div className="md:hidden mb-4 relative">
-          <button 
-            onClick={toggleMobileCategories} 
-            className="flex items-center justify-between w-full p-4 border-b-2 border-purple-200"
-            style={{
-              fontFamily: "'VT323', monospace",
-            }}
-          >
-            <span className="text-xl font-bold uppercase tracking-widest text-purple-700">
-              {getDisplayTitle()}
-            </span>
-            {sidebarOpen ? (
-              <ChevronUp size={20} className="text-purple-600" />
-            ) : (
-              <ChevronDown size={20} className="text-purple-600" />
-            )}
-          </button>
+          
           
           {/* Dropdown menu for mobile */}
-          {sidebarOpen && (
-            <div 
-              className="absolute top-full left-0 right-0 z-20 bg-white border border-purple-100 shadow-lg md:hidden"
-              style={{ boxShadow: "4px 4px 0px rgba(0,0,0,0.2)" }}
-            >
+          {sidebarOpen && <div className="absolute top-full left-0 right-0 z-20 bg-white border border-purple-100 shadow-lg md:hidden" style={{
+          boxShadow: "4px 4px 0px rgba(0,0,0,0.2)"
+        }}>
               <div className="max-h-[60vh] overflow-y-auto">
-                <CategorySidebar 
-                  categories={categories} 
-                  selectedCategory={selectedCategory} 
-                  onCategorySelect={category => {
-                    setSelectedCategory(category);
-                    setSidebarOpen(false);
-                  }} 
-                  unreadCounts={unreadCounts} 
-                />
+                <CategorySidebar categories={categories} selectedCategory={selectedCategory} onCategorySelect={category => {
+              setSelectedCategory(category);
+              setSidebarOpen(false);
+            }} unreadCounts={unreadCounts} />
               </div>
-            </div>
-          )}
+            </div>}
         </div>
         
         {/* Desktop Sidebar - Categories */}
         <div className="hidden md:block">
-          <CategorySidebar 
-            categories={categories} 
-            selectedCategory={selectedCategory} 
-            onCategorySelect={setSelectedCategory} 
-            unreadCounts={unreadCounts} 
-          />
+          <CategorySidebar categories={categories} selectedCategory={selectedCategory} onCategorySelect={setSelectedCategory} unreadCounts={unreadCounts} />
         </div>
         
         {/* Main Section - Newsletter List */}
         <div className="w-full bg-white pt-2 px-4">
           <div className="max-w-4xl">
-            <NewsletterList 
-              newsletters={newsletters} 
-              selectedNewsletterID={selectedNewsletterID} 
-              onNewsletterSelect={setSelectedNewsletterID} 
-              selectedCategory={selectedCategory} 
-              onCategorySelect={category => {
-                setSelectedCategory(category);
-                setSidebarOpen(false);
-              }}
-              isMobile={true} 
-              toggleMobileCategories={toggleMobileCategories}
-              sidebarOpen={sidebarOpen}
-            />
+            <NewsletterList newsletters={newsletters} selectedNewsletterID={selectedNewsletterID} onNewsletterSelect={setSelectedNewsletterID} selectedCategory={selectedCategory} onCategorySelect={category => {
+            setSelectedCategory(category);
+            setSidebarOpen(false);
+          }} isMobile={true} toggleMobileCategories={toggleMobileCategories} sidebarOpen={sidebarOpen} />
           </div>
         </div>
       </main>
@@ -114,5 +73,4 @@ const Index = () => {
       <Footer />
     </div>;
 };
-
 export default Index;

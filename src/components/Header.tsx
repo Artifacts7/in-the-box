@@ -1,10 +1,7 @@
-
 import { Menu } from "lucide-react";
-
 interface HeaderProps {
   onMenuClick?: () => void;
 }
-
 const Header = ({
   onMenuClick
 }: HeaderProps) => {
@@ -36,15 +33,10 @@ const Header = ({
           
           {/* Mobile menu button aligned better */}
           <div className="md:hidden absolute top-6 right-4">
-            {onMenuClick && (
-              <button onClick={onMenuClick} className="p-2">
-                <Menu size={24} className="text-purple-600" />
-              </button>
-            )}
+            {onMenuClick}
           </div>
         </div>
       </div>
     </header>;
 };
-
 export default Header;
