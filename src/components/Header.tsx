@@ -12,7 +12,7 @@ const Header = ({
           <div className="flex items-center gap-4 md:gap-6 w-full">
             <div style={{
             background: "linear-gradient(to bottom, #f7f5ff 0%, #e5deff 100%)"
-          }} className="w-[90px] md:w-[120px] p-3 border-2 border-purple-300 rounded-sm shadow-[6px_6px_0px_rgba(0,0,0,0.15)] px-[20px]">
+          }} className="w-[100px] md:w-[140px] p-3 border-2 border-purple-300 shadow-[6px_6px_0px_rgba(0,0,0,0.15)] px-[10px] rounded">
               <img src="/lovable-uploads/76c43e19-dd4e-42a8-9315-f676898aa4af.png" alt="In The Box Logo" className="w-full h-auto object-contain" />
             </div>
             
