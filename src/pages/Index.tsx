@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { newsletters, getCategories, getUnreadCounts } from "../data/newsletters";
 import Header from "../components/Header";
@@ -36,7 +37,7 @@ const Index = () => {
   return <div className="min-h-screen flex flex-col bg-white text-black">
       <Header onMenuClick={toggleMobileCategories} />
       
-      <main className="flex-1 grid md:grid-cols-[272px_1fr] gap-x-8 relative max-w-6xl mx-auto px-4 md:px-8 pt-6 md:pt-8">
+      <main className="flex-1 grid md:grid-cols-[272px_1fr] gap-x-8 relative max-w-6xl mx-auto px-4 md:px-8 pt-4 md:pt-6">
         {/* Mobile category title that acts as dropdown trigger */}
         <div className="md:hidden mb-4 relative">
           

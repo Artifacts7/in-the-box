@@ -1,3 +1,4 @@
+
 import { Menu } from "lucide-react";
 interface HeaderProps {
   onMenuClick?: () => void;
@@ -5,12 +6,12 @@ interface HeaderProps {
 const Header = ({
   onMenuClick
 }: HeaderProps) => {
-  return <header className="py-6 md:py-10 bg-white border-b border-gray-200">
+  return <header className="py-4 md:py-8 bg-white border-b border-gray-200">
       <div className="max-w-6xl mx-auto px-4 md:px-8">
-        <div className="flex flex-col md:flex-row items-center w-full gap-4 md:gap-8">
+        <div className="flex flex-col md:flex-row items-center w-full gap-2 md:gap-8">
           {/* Logo and title in one row */}
-          <div className="flex items-center gap-6 md:gap-8 w-full">
-            <div className="w-[100px] md:w-[140px] p-3 md:p-4 border-2 border-purple-300 rounded-sm shadow-[6px_6px_0px_rgba(0,0,0,0.15)]" style={{
+          <div className="flex items-center gap-4 md:gap-6 w-full">
+            <div className="w-[90px] md:w-[120px] p-3 border-2 border-purple-300 rounded-sm shadow-[6px_6px_0px_rgba(0,0,0,0.15)]" style={{
             background: "linear-gradient(to bottom, #f7f5ff 0%, #e5deff 100%)"
           }}>
               <img src="/lovable-uploads/76c43e19-dd4e-42a8-9315-f676898aa4af.png" alt="In The Box Logo" className="w-full h-auto object-contain" />
@@ -20,19 +21,19 @@ const Header = ({
               <h1 style={{
               fontFamily: "'VT323', monospace",
               color: '#7E69AB'
-            }} className="text-3xl md:text-6xl uppercase tracking-widest text-black font-bold">
+            }} className="text-2xl md:text-5xl uppercase tracking-widest text-black font-bold">
                 IN THE BOX
               </h1>
               <p style={{
               fontFamily: "'VT323', monospace"
-            }} className="text-sm md:text-xl text-gray-600 tracking-wide mt-1">
+            }} className="text-xs md:text-lg text-gray-600 tracking-wide mt-1">
                 Handpicked Newsletters Worth Your Inbox
               </p>
             </div>
           </div>
           
           {/* Mobile menu button aligned better */}
-          <div className="md:hidden absolute top-6 right-4">
+          <div className="md:hidden absolute top-4 right-4">
             {onMenuClick}
           </div>
         </div>
