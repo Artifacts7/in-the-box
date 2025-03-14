@@ -102,7 +102,10 @@ const Index = () => {
               onCategorySelect={category => {
                 setSelectedCategory(category);
                 setSidebarOpen(false);
-              }} 
+              }}
+              isMobile={true} 
+              toggleMobileCategories={toggleMobileCategories}
+              sidebarOpen={sidebarOpen}
             />
           </div>
         </div>

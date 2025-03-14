@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Newsletter } from "../types/Newsletter";
 import NewsletterCard from "./NewsletterCard";
 import { Input } from "../components/ui/input";
-import { Search, FileSearch, Cpu, Vote, Newspaper, BookOpen, Music, Utensils, Users, Mail } from "lucide-react";
+import { Search, FileSearch, Cpu, Vote, Newspaper, BookOpen, Music, Utensils, Users, Mail, ChevronDown, ChevronUp } from "lucide-react";
 
 interface NewsletterListProps {
   newsletters: Newsletter[];
@@ -11,6 +11,9 @@ interface NewsletterListProps {
   onNewsletterSelect: (id: string) => void;
   selectedCategory: string | null;
   onCategorySelect: (category: string) => void;
+  isMobile?: boolean;
+  toggleMobileCategories?: () => void;
+  sidebarOpen?: boolean;
 }
 
 const NewsletterList = ({
@@ -18,7 +21,10 @@ const NewsletterList = ({
   selectedNewsletterID,
   onNewsletterSelect,
   selectedCategory,
-  onCategorySelect
+  onCategorySelect,
+  isMobile = false,
+  toggleMobileCategories,
+  sidebarOpen
 }: NewsletterListProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [animatingIcon, setAnimatingIcon] = useState(false);
@@ -72,7 +78,8 @@ const NewsletterList = ({
   return <div className="w-full max-w-4xl">
       <div className="mb-8">
         <div className="flex items-start mb-5 px-1">
-          <button onClick={handleIconClick} className="cursor-pointer mr-3 mt-1" style={{
+          {/* On mobile, we don't show this button because the dropdown is integrated with the section title */}
+          <button onClick={handleIconClick} className="cursor-pointer mr-3 mt-1 hidden md:block" style={{
           background: "linear-gradient(to bottom, #f0f0f0, #e1e1e1)",
           border: "1px solid #c0c0c0",
           borderRadius: "4px",
@@ -81,14 +88,40 @@ const NewsletterList = ({
         }}>
             {getCategoryIcon()}
           </button>
-          <div>
+          
+          {/* Desktop and Mobile section title - on mobile it doubles as the dropdown trigger */}
+          <div className="flex-1">
+            {/* This is the unified section title + dropdown for mobile */}
+            <button 
+              className={`text-left w-full md:hidden flex items-center justify-between py-2 px-0`}
+              onClick={toggleMobileCategories}
+              style={{
+                fontFamily: "'VT323', monospace",
+                color: '#7E69AB'
+              }}
+            >
+              <div className="flex items-center">
+                <span className="block md:hidden mr-2">
+                  {getCategoryIcon()}
+                </span>
+                <h2 className="text-2xl font-bold uppercase tracking-widest">
+                  {getDisplayTitle()}
+                </h2>
+              </div>
+              {sidebarOpen !== undefined && (
+                <span className="block md:hidden">
+                  {sidebarOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                </span>
+              )}
+            </button>
+            
+            {/* Desktop-only title */}
             <h2 style={{
-            fontFamily: "'VT323', monospace",
-            color: '#7E69AB'
-          }} className="text-2xl font-bold uppercase tracking-widest text-left mb-1 px-0 py-[10px]">
+              fontFamily: "'VT323', monospace",
+              color: '#7E69AB'
+            }} className="hidden md:block text-2xl font-bold uppercase tracking-widest text-left mb-1 px-0 py-[10px]">
               {getDisplayTitle()}
             </h2>
-            
           </div>
         </div>
         
