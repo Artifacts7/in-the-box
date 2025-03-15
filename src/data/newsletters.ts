@@ -74,6 +74,18 @@ export const newsletters: Newsletter[] = [
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
     linkUrl: "https://www.siliconcontinent.com/"
   },
+  {
+    id: "7",
+    title: "Everything in Moderation",
+    description: "Need-to-know news and analysis about platform policy, content moderation and internet regulation. Twice a week.",
+    sender: "Ben Whitelaw",
+    date: "May 12, 2023",
+    isRead: true,
+    isStarred: false,
+    category: "Technology",
+    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
+    linkUrl: "https://www.everythinginmoderation.co/"
+  },
 ];
 
 // Extract unique categories for sidebar
