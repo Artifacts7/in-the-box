@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { newsletters, getCategories, getUnreadCounts } from "../data/newsletters";
 import Header from "../components/Header";
@@ -40,14 +39,7 @@ const Index = () => {
       <main className="flex-1 grid md:grid-cols-[272px_1fr] gap-x-6 relative max-w-6xl mx-auto px-4 md:px-8 pt-3 md:pt-4">
         {/* Mobile category title that acts as dropdown trigger */}
         <div className="md:hidden mb-3 relative">
-          <button 
-            onClick={toggleMobileCategories}
-            className="w-full flex items-center justify-between p-2 border border-purple-100 bg-white shadow-sm"
-            style={{ boxShadow: "2px 2px 0px rgba(0,0,0,0.1)" }}
-          >
-            <span className="font-medium text-purple-700">{getDisplayTitle()}</span>
-            {sidebarOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-          </button>
+          
           
           {/* Dropdown menu for mobile */}
           {sidebarOpen && <div className="absolute top-full left-0 right-0 z-20 bg-white border border-purple-100 shadow-lg md:hidden" style={{
