@@ -115,7 +115,8 @@ export default {
 			},
 			fontFamily: {
 				sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-				serif: ['Georgia', 'ui-serif']
+				serif: ['Georgia', 'ui-serif'],
+				pixel: ['"Press Start 2P"', 'monospace']
 			},
 			boxShadow: {
 				'subtle': '0 2px 10px rgba(0, 0, 0, 0.03)'
@@ -124,3 +125,4 @@ export default {
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+
