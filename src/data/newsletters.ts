@@ -148,7 +148,7 @@ export const newsletters: Newsletter[] = [
   },
   {
     id: "13",
-    title: "Interconnected"
+    title: "Interconnected",
     description: "A weekly, bilingual (English/Chinese) publication that looks at the venn diagram of builders, operators, investors, regulators, and how they are all (inter)connected.",
     sender: "Kevin Xu",
     date: "May 15, 2023",
@@ -160,7 +160,7 @@ export const newsletters: Newsletter[] = [
   },
   {
     id: "14",
-    title: "Political Calculus"
+    title: "Political Calculus",
     description: "A Substack on the connections between politics and the economy from the author of Why Politics Fails.",
     sender: "Ben Ansell",
     date: "May 15, 2023",
@@ -172,7 +172,7 @@ export const newsletters: Newsletter[] = [
   },
   {
     id: "15",
-    title: "TL;DRussia"
+    title: "TL;DRussia",
     description: "Insight and analysis. No riddles or mysteries on Russia and current affairs",
     sender: "Sam Greene",
     date: "May 15, 2023",
