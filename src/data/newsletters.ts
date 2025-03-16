@@ -86,6 +86,42 @@ export const newsletters: Newsletter[] = [
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
     linkUrl: "https://www.everythinginmoderation.co/"
   },
+  {
+    id: "8",
+    title: "The Leopard",
+    description: "The Leopard is a European-focused newsletter that offers a far-sighted and distinctly European perspective on a changing world. Written by a British journalist based in Brussels",
+    sender: "Sam Wilkin",
+    date: "May 12, 2023",
+    isRead: true,
+    isStarred: false,
+    category: "Politics",
+    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
+    linkUrl: "https://www.theleopard.eu/"
+  },
+  {
+    id: "9",
+    title: "Gulf Stream Blues",
+    description: "Gulf Stream Blues is written by the American-European journalist Dave Keating, based in Brussels. It focuses on European politics, and wide questions of Europe’s place in the world.",
+    sender: "Dave Keating",
+    date: "May 12, 2023",
+    isRead: true,
+    isStarred: false,
+    category: "Politics",
+    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
+    linkUrl: "https://davekeating.substack.com/"
+  }
+  {
+    id: "10",
+    title: "Euro Beats",
+    description: "A constructively contrarian take on the history, politics and economics of the European Union and more. Europhile in origin, skeptic by nature, but always honest by design.",
+    sender: "Dr. Eoin Drea",
+    date: "May 12, 2023",
+    isRead: true,
+    isStarred: false,
+    category: "Politics",
+    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
+    linkUrl: "https://eurobeats.substack.com/"
+  }
 ];
 
 // Extract unique categories for sidebar
