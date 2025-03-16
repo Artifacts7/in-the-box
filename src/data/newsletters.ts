@@ -101,7 +101,7 @@ export const newsletters: Newsletter[] = [
   {
     id: "9",
     title: "Gulf Stream Blues",
-    description: "Gulf Stream Blues is written by the American-European journalist Dave Keating, based in Brussels. It focuses on European politics, and wide questions of Europe's place in the world.",
+    description: "Gulf Stream Blues is written by the American-European journalist Dave Keating, based in Brussels. It focuses on European politics, and wide questions of Europe’s place in the world.",
     sender: "Dave Keating",
     date: "May 12, 2023",
     isRead: true,
@@ -109,7 +109,7 @@ export const newsletters: Newsletter[] = [
     category: "Politics",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
     linkUrl: "https://davekeating.substack.com/"
-  },
+  }
   {
     id: "10",
     title: "Euro Beats",
