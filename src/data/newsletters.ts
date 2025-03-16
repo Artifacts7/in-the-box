@@ -122,6 +122,18 @@ export const newsletters: Newsletter[] = [
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
     linkUrl: "https://eurobeats.substack.com/"
   }
+  {
+    id: "11",
+    title: "Wealth of Nations",
+    description: "A forum in which people with similar interests and concerns can discuss and debate the challenges facing the British, European and global economy and share their own insights.",
+    sender: "Simon Nixon",
+    date: "May 12, 2023",
+    isRead: true,
+    isStarred: false,
+    category: "Politics",
+    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
+    linkUrl: "https://nixons.substack.com/"
+  }
 ];
 
 // Extract unique categories for sidebar
