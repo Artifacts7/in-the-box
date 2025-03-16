@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { newsletters, getCategories, getUnreadCounts } from "../data/newsletters";
 import Header from "../components/Header";
@@ -5,6 +6,7 @@ import NewsletterList from "../components/NewsletterList";
 import CategorySidebar from "../components/CategorySidebar";
 import Footer from "../components/Footer";
 import { ChevronDown, ChevronUp } from "lucide-react";
+
 const Index = () => {
   const [selectedNewsletterID, setSelectedNewsletterID] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -22,6 +24,7 @@ const Index = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
   const toggleMobileCategories = () => {
     setSidebarOpen(!sidebarOpen);
   };
@@ -33,13 +36,21 @@ const Index = () => {
     }
     return selectedCategory;
   };
+
   return <div className="min-h-screen flex flex-col bg-white text-black">
       <Header onMenuClick={toggleMobileCategories} />
       
       <main className="flex-1 grid md:grid-cols-[272px_1fr] gap-x-6 relative max-w-6xl mx-auto px-4 md:px-8 pt-3 md:pt-4">
         {/* Mobile category title that acts as dropdown trigger */}
         <div className="md:hidden mb-3 relative">
-          
+          <button
+            onClick={toggleMobileCategories}
+            className="w-full flex justify-between items-center px-4 py-2 rounded-md bg-white border border-purple-200"
+            style={{ boxShadow: "2px 2px 0px rgba(0,0,0,0.1)" }}
+          >
+            <span className="font-medium text-purple-900">{getDisplayTitle()}</span>
+            {sidebarOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+          </button>
           
           {/* Dropdown menu for mobile */}
           {sidebarOpen && <div className="absolute top-full left-0 right-0 z-20 bg-white border border-purple-100 shadow-lg md:hidden" style={{
@@ -73,4 +84,5 @@ const Index = () => {
       <Footer />
     </div>;
 };
+
 export default Index;
