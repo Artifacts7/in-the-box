@@ -181,7 +181,7 @@ export const newsletters: Newsletter[] = [
     category: "Politics",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
     linkUrl: "https://substack.com/@tldrussia"
-  },
+  }
 ];
 
 // Extract unique categories for sidebar
