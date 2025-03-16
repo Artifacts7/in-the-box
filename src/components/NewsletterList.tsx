@@ -1,10 +1,8 @@
-
 import { useState } from "react";
 import { Newsletter } from "../types/Newsletter";
 import NewsletterCard from "./NewsletterCard";
 import { Input } from "../components/ui/input";
 import { Search, FileSearch, Cpu, Vote, Newspaper, BookOpen, Music, Utensils, Users, Mail, ChevronDown, ChevronUp, DollarSign } from "lucide-react";
-
 interface NewsletterListProps {
   newsletters: Newsletter[];
   selectedNewsletterID: string | null;
@@ -15,7 +13,6 @@ interface NewsletterListProps {
   toggleMobileCategories?: () => void;
   sidebarOpen?: boolean;
 }
-
 const NewsletterList = ({
   newsletters,
   selectedNewsletterID,
@@ -28,7 +25,6 @@ const NewsletterList = ({
 }: NewsletterListProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [animatingIcon, setAnimatingIcon] = useState(false);
-
   const getCategoryIcon = () => {
     if (selectedCategory === null) {
       return <Mail size={30} className={`text-purple-600 ${animatingIcon ? 'translate-x-1' : ''} transition-transform duration-300`} />;
@@ -54,19 +50,15 @@ const NewsletterList = ({
         return <Mail size={30} className={`text-purple-600 ${animatingIcon ? 'scale-105' : ''} transition-transform duration-300`} />;
     }
   };
-
   const handleIconClick = () => {
     setAnimatingIcon(true);
     setTimeout(() => setAnimatingIcon(false), 300);
   };
-
   const filteredNewsletters = newsletters.filter(newsletter => {
     const matchesSearch = newsletter.title.toLowerCase().includes(searchTerm.toLowerCase()) || newsletter.description.toLowerCase().includes(searchTerm.toLowerCase()) || newsletter.sender && newsletter.sender.toLowerCase().includes(searchTerm.toLowerCase());
-
     const matchesCategory = selectedCategory === null || newsletter.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
-
   const sortedNewsletters = [...filteredNewsletters].sort((a, b) => a.title.localeCompare(b.title));
 
   // Display title based on selectedCategory, matching the exact wording in the categories list
@@ -76,7 +68,6 @@ const NewsletterList = ({
     }
     return selectedCategory;
   };
-
   return <div className="w-full max-w-4xl">
       <div className="mb-8">
         <div className="flex items-start mb-5 px-1">
@@ -94,34 +85,28 @@ const NewsletterList = ({
           {/* Desktop and Mobile section title - on mobile it doubles as the dropdown trigger */}
           <div className="flex-1">
             {/* This is the unified section title + dropdown for mobile */}
-            <button 
-              className={`text-left w-full md:hidden flex items-center justify-between py-2 px-0`}
-              onClick={toggleMobileCategories}
-              style={{
-                fontFamily: "'VT323', monospace",
-                color: '#7E69AB'
-              }}
-            >
+            <button className={`text-left w-full md:hidden flex items-center justify-between py-2 px-0`} onClick={toggleMobileCategories} style={{
+            fontFamily: "'VT323', monospace",
+            color: '#7E69AB'
+          }}>
               <div className="flex items-center">
                 <span className="block md:hidden mr-2">
                   {getCategoryIcon()}
                 </span>
-                <h2 className="text-2xl font-bold uppercase tracking-widest">
+                <h2 className="font-bold uppercase tracking-widest text-lg">
                   {getDisplayTitle()}
                 </h2>
               </div>
-              {sidebarOpen !== undefined && (
-                <span className="block md:hidden">
+              {sidebarOpen !== undefined && <span className="block md:hidden">
                   {sidebarOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                </span>
-              )}
+                </span>}
             </button>
             
             {/* Desktop-only title */}
             <h2 style={{
-              fontFamily: "'VT323', monospace",
-              color: '#7E69AB'
-            }} className="hidden md:block text-2xl font-bold uppercase tracking-widest text-left mb-1 px-0 py-[10px]">
+            fontFamily: "'VT323', monospace",
+            color: '#7E69AB'
+          }} className="hidden md:block text-2xl font-bold uppercase tracking-widest text-left mb-1 px-0 py-[10px]">
               {getDisplayTitle()}
             </h2>
           </div>
@@ -161,5 +146,4 @@ const NewsletterList = ({
         </div>}
     </div>;
 };
-
 export default NewsletterList;
