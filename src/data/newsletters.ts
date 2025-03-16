@@ -133,7 +133,54 @@ export const newsletters: Newsletter[] = [
     category: "Economy",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
     linkUrl: "https://economicobserver.com/"
-  }
+  },
+  {
+    id: "12",
+    title: "Democracy for Sale",
+    description: "Democracy for Sale is all about the threats to democracy from dark money and hidden influence, why it matters…. and what we can do about it.",
+    sender: "Peter Geoghegan",
+    date: "May 15, 2023",
+    isRead: false,
+    isStarred: true,
+    category: "Economy",
+    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
+    linkUrl: "https://democracyforsale.substack.com/"
+  },
+  {
+    id: "13",
+    title: "Interconnected"
+    description: "A weekly, bilingual (English/Chinese) publication that looks at the venn diagram of builders, operators, investors, regulators, and how they are all (inter)connected.",
+    sender: "Kevin Xu",
+    date: "May 15, 2023",
+    isRead: false,
+    isStarred: true,
+    category: "Economy",
+    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
+    linkUrl: "https://interconnect.substack.com/"
+  },
+  {
+    id: "14",
+    title: "Political Calculus"
+    description: "A Substack on the connections between politics and the economy from the author of Why Politics Fails.",
+    sender: "Ben Ansell",
+    date: "May 15, 2023",
+    isRead: false,
+    isStarred: true,
+    category: "Economy",
+    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
+    linkUrl: "https://benansell.substack.com/"
+  },
+  {
+    id: "15",
+    title: "TL;DRussia"
+    description: "Insight and analysis. No riddles or mysteries on Russia and current affairs",
+    sender: "Sam Greene",
+    date: "May 15, 2023",
+    isRead: false,
+    isStarred: true,
+    category: "Politics",
+    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
+    linkUrl: "https://substack.com/@tldrussia"
 ];
 
 // Extract unique categories for sidebar
