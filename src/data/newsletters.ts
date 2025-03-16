@@ -124,30 +124,6 @@ export const newsletters: Newsletter[] = [
   },
   {
     id: "11",
-    title: "Educational Tech Weekly",
-    description: "A weekly newsletter on the latest trends in educational technology, online learning platforms, and digital classroom innovations.",
-    sender: "Emily Johnson",
-    date: "May 14, 2023",
-    isRead: false,
-    isStarred: false,
-    category: "Education",
-    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
-    linkUrl: "https://edtechweekly.com/"
-  },
-  {
-    id: "12",
-    title: "Market Insights",
-    description: "Weekly analysis of global market trends, financial news, and economic developments affecting businesses and investors.",
-    sender: "Financial Times",
-    date: "May 16, 2023",
-    isRead: false,
-    isStarred: false,
-    category: "Economy",
-    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
-    linkUrl: "https://marketinsights.com/"
-  },
-  {
-    id: "13",
     title: "Economic Observer",
     description: "In-depth coverage of economic policies, trade relations, and financial market developments across Europe and globally.",
     sender: "The Economist",
