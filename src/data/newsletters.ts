@@ -121,6 +121,18 @@ export const newsletters: Newsletter[] = [
     category: "Politics",
     imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
     linkUrl: "https://eurobeats.substack.com/"
+  },
+  {
+    id: "11",
+    title: "Educational Tech Weekly",
+    description: "A weekly newsletter on the latest trends in educational technology, online learning platforms, and digital classroom innovations.",
+    sender: "Emily Johnson",
+    date: "May 14, 2023",
+    isRead: false,
+    isStarred: false,
+    category: "Education",
+    imageUrl: "/lovable-uploads/40a5cd41-be28-4f9b-bf35-c798b1073e8e.png",
+    linkUrl: "https://edtechweekly.com/"
   }
 ];
 
