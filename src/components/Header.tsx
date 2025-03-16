@@ -1,3 +1,4 @@
+
 import { Menu } from "lucide-react";
 interface HeaderProps {
   onMenuClick?: () => void;
@@ -13,7 +14,7 @@ const Header = ({
             <div style={{
             background: "linear-gradient(to bottom, #f7f5ff 0%, #e5deff 100%)"
           }} className="w-[80px] md:w-[110px] p-2 border-2 border-purple-300 shadow-[4px_4px_0px_rgba(0,0,0,0.15)] px-[10px] rounded-sm">
-              <img src="/lovable-uploads/76c43e19-dd4e-42a8-9315-f676898aa4af.png" alt="In The Box Logo" className="w-full h-auto object-contain" />
+              <img src="/lovable-uploads/44b4a3b8-454e-44d6-8760-ef93d4bb995d.png" alt="In The Box Logo" className="w-full h-auto object-contain" />
             </div>
             
             <div className="text-left">
@@ -34,7 +35,7 @@ const Header = ({
           {/* Mobile menu button aligned better */}
           <div className="md:hidden absolute top-4 right-4">
             {onMenuClick && <button onClick={onMenuClick} aria-label="Toggle Menu">
-                
+                <Menu size={24} />
               </button>}
           </div>
         </div>
