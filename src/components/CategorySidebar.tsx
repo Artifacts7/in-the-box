@@ -1,4 +1,4 @@
-import { Mail, ChevronRight, Cpu, Vote, Newspaper, BookOpen, Music, Utensils, Users } from "lucide-react";
+import { Mail, ChevronRight, Cpu, Vote, Newspaper, BookOpen, Music, Utensils, Users, DollarSign } from "lucide-react";
 import { useState, useEffect } from "react";
 
 interface CategorySidebarProps {
@@ -45,6 +45,8 @@ const CategorySidebar = ({
         return <Utensils size={20} className={`text-purple-500 ${isAnimating ? 'rotate-12' : ''} transition-transform`} />;
       case "social":
         return <Users size={20} className={`text-purple-500 ${isAnimating ? 'translate-x-1' : ''} transition-transform`} />;
+      case "economy":
+        return <DollarSign size={20} className={`text-purple-500 ${isAnimating ? 'scale-110' : ''} transition-transform`} />;
       default:
         return <Mail size={20} className={`text-purple-500 ${isAnimating ? 'translate-y-1' : ''} transition-transform`} />;
     }

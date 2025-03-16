@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Newsletter } from "../types/Newsletter";
 import NewsletterCard from "./NewsletterCard";
 import { Input } from "../components/ui/input";
-import { Search, FileSearch, Cpu, Vote, Newspaper, BookOpen, Music, Utensils, Users, Mail, ChevronDown, ChevronUp } from "lucide-react";
+import { Search, FileSearch, Cpu, Vote, Newspaper, BookOpen, Music, Utensils, Users, Mail, ChevronDown, ChevronUp, DollarSign } from "lucide-react";
 
 interface NewsletterListProps {
   newsletters: Newsletter[];
@@ -48,6 +48,8 @@ const NewsletterList = ({
         return <Utensils size={30} className={`text-purple-600 ${animatingIcon ? 'rotate-12' : ''} transition-transform duration-300`} />;
       case "social":
         return <Users size={30} className={`text-purple-600 ${animatingIcon ? 'translate-x-1' : ''} transition-transform duration-300`} />;
+      case "economy":
+        return <DollarSign size={30} className={`text-purple-600 ${animatingIcon ? 'scale-110' : ''} transition-transform duration-300`} />;
       default:
         return <Mail size={30} className={`text-purple-600 ${animatingIcon ? 'scale-105' : ''} transition-transform duration-300`} />;
     }
